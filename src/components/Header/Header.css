@@ -1,0 +1,32 @@
+.App__header {
+  background-color: #222831;
+  height: 70px;
+}
+
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header__logoup{
+  display: flex;
+  align-items: center;
+}
+
+.logo{
+  width: 50px;
+  margin-right: 10px;
+}
+
+.login-block{
+  display: flex;
+  align-items: center;
+}
+
+.login-items{
+  text-align: end;
+}
+
+

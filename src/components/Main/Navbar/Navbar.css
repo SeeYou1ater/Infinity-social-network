@@ -1,0 +1,14 @@
+.App__nav{
+  grid-area: nav;
+  background-color: #393E46;
+}
+
+.item{
+  display: block;
+  color: white;
+  cursor: pointer;
+}
+
+.item:hover{
+  background-color: #4d5159;
+}

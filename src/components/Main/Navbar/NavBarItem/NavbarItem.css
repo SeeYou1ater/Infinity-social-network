@@ -1,0 +1,11 @@
+.item{
+  padding: 15px;
+  padding-left: 40px;
+}
+
+
+.item:focus{
+  background-color: #4d5159;
+}
+
+

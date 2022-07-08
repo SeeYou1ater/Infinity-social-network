@@ -1,0 +1,55 @@
+.App__friends {
+  text-align: center;
+}
+
+.App__friends-item {
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+}
+
+.App__friends-itemPreview {
+  display: inline-block;
+  border: 1px solid red;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.App__friends-info {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App__friends-itemPhoto {
+  margin-bottom: 10px;
+}
+
+.App__friends-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.App__friends-selectPage {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.App__friends-numberPage:not(:last-child) {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.App__friends-pageContainer {
+  width: 500px;
+  overflow-x: scroll;
+}
+
+.App__friends-pageFlexContainer {
+  display: flex;
+  justify-content: center;
+}

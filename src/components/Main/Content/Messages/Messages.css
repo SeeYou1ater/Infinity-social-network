@@ -1,0 +1,5 @@
+.App__messages {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+}
