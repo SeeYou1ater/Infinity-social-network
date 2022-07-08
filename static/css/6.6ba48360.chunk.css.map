@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/6.6ba48360.chunk.css","mappings":"AAAA,eAEE,YAAa,CADb,iBAAkB,CAElB,6BACF","sources":["components/Main/Content/Messages/Messages.css"],"sourcesContent":[".App__messages {\r\n  grid-area: content;\r\n  display: grid;\r\n  grid-template-columns: 3fr 7fr;\r\n}"],"names":[],"sourceRoot":""}
