@@ -10,7 +10,7 @@ import './Login.css';
 
 class Login extends React.Component {
   render() {
-    if (this.props.isAuth) { return <Navigate to='/profile'/>} else {
+    if (this.props.isAuth) { return <Navigate to={`/profile/${this.props.authUserId}`}/>} else {
     return (
       <div className='login-page'>
         <h1>

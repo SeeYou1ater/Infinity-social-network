@@ -11,14 +11,24 @@ import { Navigate } from 'react-router-dom';
 
 
 class ProfileContainer extends React.Component {
-
-  componentDidMount() {
+  refreshPage() {
     let profileId = this.props.router.params.profileId;
     if (!profileId) {
       profileId = this.props.authorizedUserId;
     }
     this.props.setUserProfile(profileId)
     this.props.setUserStatus(profileId)
+  }
+
+  componentDidMount() {
+    this.refreshPage()
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.router.params.profileId !== this.props.router.params.profileId) {
+      this.refreshPage()
+      console.log('hi')
+    }
   }
 
   render () {

@@ -17,8 +17,7 @@ function Content(props) {
       <Suspense fallback={<Preloader/>}>
         <Routes>
           <Route  path="/profile/:profileId" 
-                  element={<ProfileContainer dataProfile = {props.state.dataProfile}/>}/>                  
-          <Route path="/profile/*" element={<ProfileContainer dataProfile = {props.state.dataProfile}/>}/>
+                  element={<ProfileContainer  dataProfile = {props.state.dataProfile}/>}/>                  
           <Route path="/messages/*" element={<MessagesContainer   dataMessages = {props.state.dataMessages}/>}/>
           <Route path="/friends/*" element={<FriendsContainer/>}/>
           <Route path="/findUsers/*" element={<FindUsersContainer/>}/>

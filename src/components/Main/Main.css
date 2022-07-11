@@ -1,4 +1,5 @@
 .main{
+  height: 100vh;
   display: grid;
   grid-template-columns: 3fr 10fr;
   grid-template-areas: 

@@ -10,24 +10,26 @@
 
 .App__friends-itemPreview {
   display: inline-block;
-  border: 1px solid red;
   border-radius: 15px;
   padding: 5px;
 }
 
 .App__friends-info {
   display: inline-block;
-  border: 1px solid black;
   border-radius: 15px;
   padding: 10px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .App__friends-itemPhoto {
   margin-bottom: 10px;
+}
+
+.App__users-photo {
+  max-width: 100px;
+  border-radius: 50%;
 }
 
 .App__friends-item:not(:last-child) {
@@ -52,4 +54,8 @@
 .App__friends-pageFlexContainer {
   display: flex;
   justify-content: center;
+}
+
+.App__friends-country {
+  margin-bottom: 10px;
 }

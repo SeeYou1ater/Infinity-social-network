@@ -1,13 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Navbar.css';
 import NavBarItem from './NavBarItem/NavbarItem';
 
-function Navbar () {
+function Navbar (props) {
   return (
     <section className='App__nav'>
       <ul>
         <NavBarItem item="News" path="/news"/>
-        <NavBarItem item="Profile" path="/profile"/>
+        <NavBarItem item="My profile" path={`/profile/${props.authId}`}/>
         <NavBarItem item="Find Users" path="/findUsers"/>
         <NavBarItem item="Friends" path="/friends"/>
         <NavBarItem item="Messages" path="/messages"/>
@@ -20,4 +21,10 @@ function Navbar () {
     </section>
   )}
 
-export default Navbar;
+let mapStateToProps = (state) => {
+  return {
+    authId: state.auth.id
+  }
+}
+
+export default connect(mapStateToProps, null)(Navbar);

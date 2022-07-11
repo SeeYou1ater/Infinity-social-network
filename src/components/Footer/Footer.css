@@ -1,0 +1,10 @@
+.App__footer {
+  background-color: black;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.App__footer-text {
+  padding-top: 20px;
+}

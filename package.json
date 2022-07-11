@@ -2,7 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://seeyou1ater.github.io/Infinity-social-web/",
+  "homepage": "https://seeyou1ater.github.io/Infinity-social-network/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",

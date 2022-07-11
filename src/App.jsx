@@ -8,8 +8,9 @@ import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { initializeApp } from './redux/appReducer';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import store from './redux/redux-store';
+import Footer from './components/Footer/Footer';
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
       <div className="App">
           <HeaderContainer/>
           <Main state={this.props.state}/>
+          <Footer/>
       </div>
     )
   }
@@ -45,11 +47,11 @@ let AppContainer = compose(
   connect(mapStateToProps, mapDispatchToProps))(App);
 
 const SocialApp = (props) => {
-    return  <BrowserRouter>
+    return  <HashRouter>
               <Provider store={store}>
                 <AppContainer state={store.getState()}/>
               </Provider>
-            </BrowserRouter>
+            </HashRouter>
 }
 
 export default SocialApp

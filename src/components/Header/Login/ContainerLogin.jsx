@@ -15,13 +15,15 @@ class ContainerLogin extends React.Component {
       <Login  
               logout={this.props.logout}
               isAuth={this.props.isAuth}
-              onSubmit={this.onSubmit}/>
+              onSubmit={this.onSubmit}
+              authUserId={this.props.authUserId}/>
     )
   }
 }
 let mapStateToProps = (state) => {
   return {
     isAuth: state.auth.isAuth,
+    authUserId: state.auth.id
   }
 }
 let mapDispatchToProps = (dispatch) => {
