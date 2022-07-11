@@ -1,4 +1,5 @@
 .App__nav{
+  padding-top: 1px;
   grid-area: nav;
   background-color: #000000;
 }

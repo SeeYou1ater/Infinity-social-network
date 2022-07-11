@@ -4,7 +4,11 @@ import './NavbarItem.css';
 
 const NavBarItem = (props) => {
   return (
-    <li><NavLink to={props.path} className='item'>{props.item}</NavLink></li>
+    <li>
+      <NavLink to={props.path} className='item'>
+        <img className='item-image' src={props.icon} alt="" />{props.item}
+      </NavLink>
+    </li>
   )
 } 
 

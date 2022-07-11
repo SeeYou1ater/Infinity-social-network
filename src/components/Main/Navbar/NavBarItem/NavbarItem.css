@@ -5,8 +5,12 @@
 
 
 .item:focus{
-  background-color: #4158D0;
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  background-image: linear-gradient(43deg, rgba(65, 88, 208, 0.8) 0%, rgba(200, 80, 192, 0.8) 100%);
+}
+
+.item-image {
+  width: 18px;
+  margin-right: 10px;
 }
 
 
