@@ -1,24 +1,34 @@
 {
   "files": {
-    "main.css": "/Infinity-social-network/static/css/main.92eb8334.css",
-    "main.js": "/Infinity-social-network/static/js/main.4ba54a8c.js",
+    "main.css": "/Infinity-social-network/static/css/main.eb7f92ec.css",
+    "main.js": "/Infinity-social-network/static/js/main.7873ce7e.js",
     "static/css/6.6ba48360.chunk.css": "/Infinity-social-network/static/css/6.6ba48360.chunk.css",
     "static/js/6.4a75e7b8.chunk.js": "/Infinity-social-network/static/js/6.4a75e7b8.chunk.js",
     "static/css/310.36740cf0.chunk.css": "/Infinity-social-network/static/css/310.36740cf0.chunk.css",
     "static/js/310.e7d2e7b3.chunk.js": "/Infinity-social-network/static/js/310.e7d2e7b3.chunk.js",
     "static/media/logo.png": "/Infinity-social-network/static/media/logo.95ba6fcb53682a6f8a78.png",
+    "static/media/appMyProfile.png": "/Infinity-social-network/static/media/appMyProfile.2cafa55cb2f9fd6d6cda.png",
+    "static/media/appGames.png": "/Infinity-social-network/static/media/appGames.037ee57a39068dbaf8d3.png",
+    "static/media/appSettings.png": "/Infinity-social-network/static/media/appSettings.7a2c0f4de08d1be781ec.png",
+    "static/media/appFindUsers.png": "/Infinity-social-network/static/media/appFindUsers.d175bc81267a5856d323.png",
+    "static/media/appFriends.png": "/Infinity-social-network/static/media/appFriends.e424dca3ddcd8b6480d1.png",
+    "static/media/appNews.png": "/Infinity-social-network/static/media/appNews.03320e49797c0e46be4b.png",
+    "static/media/appMusic.png": "/Infinity-social-network/static/media/appMusic.1fc2800dd00e196c0b62.png",
+    "static/media/appVideos.png": "/Infinity-social-network/static/media/appVideos.50a5c0e9f3845ef3426f.png",
+    "static/media/appOutput.png": "/Infinity-social-network/static/media/appOutput.363c1e121672322f6d07.png",
+    "static/media/appMessages.png": "/Infinity-social-network/static/media/appMessages.01cbe954fa553038045c.png",
     "static/media/no-photo.jpg": "/Infinity-social-network/static/media/no-photo.3b94960cd25f3e97ad0c.jpg",
     "static/media/infinity-progress.svg": "/Infinity-social-network/static/media/infinity-progress.0a114c8ef1aede21d4125dc8717e2539.svg",
     "index.html": "/Infinity-social-network/index.html",
-    "main.92eb8334.css.map": "/Infinity-social-network/static/css/main.92eb8334.css.map",
-    "main.4ba54a8c.js.map": "/Infinity-social-network/static/js/main.4ba54a8c.js.map",
+    "main.eb7f92ec.css.map": "/Infinity-social-network/static/css/main.eb7f92ec.css.map",
+    "main.7873ce7e.js.map": "/Infinity-social-network/static/js/main.7873ce7e.js.map",
     "6.6ba48360.chunk.css.map": "/Infinity-social-network/static/css/6.6ba48360.chunk.css.map",
     "6.4a75e7b8.chunk.js.map": "/Infinity-social-network/static/js/6.4a75e7b8.chunk.js.map",
     "310.36740cf0.chunk.css.map": "/Infinity-social-network/static/css/310.36740cf0.chunk.css.map",
     "310.e7d2e7b3.chunk.js.map": "/Infinity-social-network/static/js/310.e7d2e7b3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.92eb8334.css",
-    "static/js/main.4ba54a8c.js"
+    "static/css/main.eb7f92ec.css",
+    "static/js/main.7873ce7e.js"
   ]
 }
