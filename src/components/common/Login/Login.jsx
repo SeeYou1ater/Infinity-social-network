@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { requiredField } from "../../../utilities/validators/validators";
-import { FormControl } from "../../common/FormControls/FormControls";
+import { FormControl } from "../FormControls/FormControls";
 import './Login.css';
 
 
@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
             <Field component={FormControl} validate={[requiredField]} formType={'input'} type="password" name={'password'} placeholder={"password"}/>
             <Field component={FormControl} name={'rememberMe'} type="checkbox" formType={'input'}/>Remember me
              {this.props.error && <div className="stopSubmit-error">{this.props.error}</div> }
-            <button>Login</button>
+            <button>Log in</button>
         </form>
     )
   }

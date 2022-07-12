@@ -8,9 +8,11 @@ import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { initializeApp } from './redux/appReducer';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import store from './redux/redux-store';
 import Footer from './components/Footer/Footer';
+import GuestPage from './components/common/GuestPage/GuestPage';
+import ContainerLogin from './components/common/Login/ContainerLogin';
 
 class App extends React.Component {
 
@@ -19,8 +21,23 @@ class App extends React.Component {
   }
 
   render () {
-    if (!this.props.initializedApp) { return <Preloader/>} else
-    return (
+    if (!this.props.initializedApp) { 
+      return <Preloader/>
+    } else if (!this.props.isAuth) { 
+      return  (
+        <>
+          <Routes>
+            <Route path="/guestpage" element={<GuestPage/>}/>
+            <Route path="/login" element={<>
+                                            <HeaderContainer/>
+                                            <ContainerLogin/>
+                                            <Footer/>
+                                          </>}/>
+            <Route path="/*" element={<Navigate to='/guestpage'/>}/>
+          </Routes>
+        </>
+      ) 
+    } else return (
       <div className="App">
           <HeaderContainer/>
           <Main state={this.props.state}/>
@@ -32,7 +49,8 @@ class App extends React.Component {
 ///////////////////////////////////////////////////////////////////////////////
 
 const mapStateToProps = (state) => ({
-  initializedApp: state.app.initialized
+  initializedApp: state.app.initialized,
+  isAuth: state.auth.isAuth
 })
 
 const mapDispatchToProps = (dispatch) => ({

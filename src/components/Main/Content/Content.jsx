@@ -1,10 +1,9 @@
 import React, { Suspense } from 'react';
 import './Content.css';
 // import MessagesContainer from './Messages/MessagesContainer';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import FindUsersContainer from './FindUsers/FindUsersContainer';
 // import ProfileContainer from './Profile/ProfileContainer';
-import ContainerLogin from '../../Header/Login/ContainerLogin';
 import FriendsContainer from './Friends/FriendsContainer';
 import Preloader from '../../common/Preloader/Preloader';
 
@@ -21,7 +20,8 @@ function Content(props) {
           <Route path="/messages/*" element={<MessagesContainer   dataMessages = {props.state.dataMessages}/>}/>
           <Route path="/friends/*" element={<FriendsContainer/>}/>
           <Route path="/findUsers/*" element={<FindUsersContainer/>}/>
-          <Route path="/login/*" element={<ContainerLogin/>}/>
+          <Route path="/*" element={<Navigate to="/messages"/>}/>
+          <Route path="/login" element={<Navigate to="/messages"/>}/>
         </Routes>
       </Suspense>  
     </section>    
