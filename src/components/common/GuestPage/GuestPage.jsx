@@ -1,4 +1,5 @@
 import React from 'react';
+import './GuestPage.css'
 import HeaderContainer from '../../Header/HeaderContainer';
 import Footer from './../../Footer/Footer';
 import ContainerLogin from '../Login/ContainerLogin';
@@ -8,8 +9,12 @@ class GuestPage extends React.Component {
     return (
         <>
           <HeaderContainer/>
-          <p>Class</p>
-          <ContainerLogin/>
+            <div className='main__wrapper'>
+              <div className='App__guestpage container'>
+                <p>Тут что то будет.</p>
+                <ContainerLogin/>
+              </div>
+            </div>
           <Footer/>
         </>
   )}

@@ -30,7 +30,9 @@ class App extends React.Component {
             <Route path="/guestpage" element={<GuestPage/>}/>
             <Route path="/login" element={<>
                                             <HeaderContainer/>
-                                            <ContainerLogin/>
+                                              <div className='main__wrapper'>
+                                                <ContainerLogin/>
+                                              </div>
                                             <Footer/>
                                           </>}/>
             <Route path="/*" element={<Navigate to='/guestpage'/>}/>
@@ -38,11 +40,13 @@ class App extends React.Component {
         </>
       ) 
     } else return (
-      <div className="App">
+      <>
           <HeaderContainer/>
-          <Main state={this.props.state}/>
+            <div className='main__wrapper'>
+              <Main state={this.props.state}/>
+            </div>
           <Footer/>
-      </div>
+      </>
     )
   }
 }
@@ -67,7 +71,9 @@ let AppContainer = compose(
 const SocialApp = (props) => {
     return  <HashRouter>
               <Provider store={store}>
-                <AppContainer state={store.getState()}/>
+                <div className='App__wrapper'>
+                  <AppContainer state={store.getState()}/>
+                </div>
               </Provider>
             </HashRouter>
 }

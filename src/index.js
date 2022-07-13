@@ -7,6 +7,6 @@ import store from './redux/redux-store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render (
-            <SocialApp state={store.getState()}/>     
+              <SocialApp state={store.getState()}/>     
 )
 

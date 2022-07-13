@@ -2,6 +2,9 @@
   grid-area: content;
   background-color: #343434;
   position: relative;
-  height: 100%;
-  padding: 15px;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 1);
 }

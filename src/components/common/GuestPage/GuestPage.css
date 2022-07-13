@@ -1,0 +1,6 @@
+.App__guestpage {
+  min-width: 700px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}

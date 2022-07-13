@@ -1,5 +1,5 @@
 html, body {
-  background-color: #E8E8E8;
+  background-color: #202020;
   font-size: 20px;
   color: white;
 }
@@ -7,6 +7,12 @@ html, body {
 .container {
   max-width: 1220px;
   margin: 0 auto;
+}
+
+.App__wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 

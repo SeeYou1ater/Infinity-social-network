@@ -1,7 +1,11 @@
 .App__nav{
-  padding-top: 10px;
+  padding: 10px;
   grid-area: nav;
   background-color: #000000;
+  border: 1px solid gray;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 1);
 }
 
 .item{
