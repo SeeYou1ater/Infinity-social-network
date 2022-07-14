@@ -15,7 +15,7 @@ class Login extends React.Component {
       <div className='App__login-uniform'>
         <div className='App__login-block'>
           <h1>
-            Login <br /><br />
+            LOGIN <br /><br />
 
             Test login and password: <br /><br />  LOGIN: free@samuraijs.com <br /><br /> PASSWORD: free
           </h1>
@@ -30,11 +30,12 @@ class LoginForm extends React.Component {
   render() {
     return (
         <form onSubmit={this.props.handleSubmit} className='App__login-form' action="">
-            <Field component={FormControl} validate={[requiredField]} formType={'input'} type="text" name={'login'} placeholder={"login"}/>
-            <Field component={FormControl} validate={[requiredField]} formType={'input'} type="password" name={'password'} placeholder={"password"}/>
-            <Field component={FormControl} name={'rememberMe'} type="checkbox" formType={'input'}/>Remember me
+            <Field className='App__login-form-inputName' component={FormControl} validate={[requiredField]} formType={'input'} type="text" name={'login'} placeholder={"login"}/>
+            <Field className='App__login-form-inputPassword' component={FormControl} validate={[requiredField]} formType={'input'} type="password" name={'password'} placeholder={"password"}/>
+            <p className="App__login-form-input-rememberMe-text">Remember me</p>
+            <Field className='App__login-form-input-rememberMe' component={FormControl} name={'rememberMe'} type="checkbox" formType={'input'}/>
              {this.props.error && <div className="stopSubmit-error">{this.props.error}</div> }
-            <button>Log in</button>
+            <button className="App__login-form-buttonLogin">Log in</button>
         </form>
     )
   }

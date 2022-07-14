@@ -1,6 +1,29 @@
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 500;
+  src: url('./assets/fonts/BarlowCondensed-Medium.ttf')
+}
+
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 300;
+  src: url('./assets/fonts/BarlowCondensed-Light.ttf')
+}
+
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 100;
+  src: url('./assets/fonts/BarlowCondensed-Thin.ttf')
+}
+
 html, body {
-  background-color: #202020;
+  background-color: #151515;
   font-size: 20px;
+  font-family: "Barlow";
+  font-weight: 100;
   color: white;
 }
 
@@ -13,6 +36,13 @@ html, body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+input{
+  display: inline-block;
+  width: 200px;
+  padding: 10px;
+  border: 2px solid rgba(53, 53, 53, 1);
 }
 
 

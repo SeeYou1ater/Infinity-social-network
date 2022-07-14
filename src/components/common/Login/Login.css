@@ -1,21 +1,59 @@
 .App__login-uniform{
   padding: 15px;
+  max-width: 350px;
+  text-align: center;
 }
 
 .App__login-form{
   padding: 15px;
 }
 
-.stopSubmit-error {
-  padding: 5px;
-  color: red;
-  border: 2px solid red;
+.App__login-form{
+  padding: 15px;
 }
 
-.App__login-block {
+.stopSubmit-error{
+  margin-top: 5px;
+  padding: 5px;
+  color: red;
+  border: 1px solid red;
+}
+
+.App__login-block{
   padding: 40px;
-  background-color: #000000;
-  border: solid 1px darkgrey;
-  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 1);
+  background-color: #202020;
   border-radius: 20px;
+}
+
+.App__login-form-inputName{
+  margin-bottom: 10px;
+  display: block;
+}
+
+.App__login-form-inputPassword{
+  display: block;
+  margin-bottom: 10px;
+}
+
+.App__login-form-input-rememberMe{
+  width: 15px;
+}
+
+.App__login-form-input-rememberMe-text{
+  display: inline-block;
+}
+
+.App__login-form-buttonLogin{
+  display: block;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 7px;
+  background-color: #98FB98;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 9px;
+  color: black;
 }

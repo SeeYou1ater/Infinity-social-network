@@ -1,8 +1,7 @@
 .App__header {
-  background-color: #000000;
+  background-color: #202020;
   height: 60px;
-  border-bottom: 1px solid darkgrey;
-  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 1);
+  border-bottom: 1px solid rgba(53, 53, 53, 1);
 }
 
 
@@ -33,4 +32,22 @@
   text-align: end;
 }
 
+.App__button-logout{
+  cursor: pointer;
+  margin-top: 5px;
+  width: 15px;
+}
+
+.App__button-login{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+  padding: 7px;
+  background-color: #98FB98;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 9px;
+  color: black;
+}
 

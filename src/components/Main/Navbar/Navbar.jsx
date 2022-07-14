@@ -11,7 +11,6 @@ import appMusic from './../../../assets/icons/white/appMusic.png';
 import appVideos from './../../../assets/icons/white/appVideos.png';
 import appGames from './../../../assets/icons/white/appGames.png';
 import appSettings from './../../../assets/icons/white/appSettings.png';
-import appOutput from './../../../assets/icons/white/appOutput.png';
 
 function Navbar (props) {
   return (
@@ -26,7 +25,6 @@ function Navbar (props) {
         <NavBarItem icon={appVideos} item="Videos" path="/videos"/>
         <NavBarItem icon={appGames} item="Games" path="/games"/>
         <NavBarItem icon={appSettings} item="Settings" path="/settings"/>
-        <NavBarItem icon={appOutput} item="Exit" path="/exit"/>
       </ul>
     </section>
   )}

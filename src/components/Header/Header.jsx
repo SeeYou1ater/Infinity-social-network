@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../logo.png';
 import './Header.css';
+import Applogout from './../../assets/icons/white/appLogout.png'
 
 function Header (props) {
   
@@ -16,9 +17,9 @@ function Header (props) {
              { props.isAuth 
               ? <div className='login-items'>
                   <div>{props.login}</div>
-                  <button onClick={props.logout}>Logout</button>
+                  <img className='App__button-logout' src={Applogout} onClick={props.logout} alt="" />
                 </div>  
-              : <NavLink to={'/login'}>Login</NavLink> }
+              : <NavLink className='App__button-login' to={'/login'}>Login</NavLink> }
           </div>
         </div>
       </header>
