@@ -13,3 +13,9 @@
     display: none;
   }
 }
+
+@media (max-width: 380px) and (min-height: 600px ){
+  .App__guestpage-content {
+    display: none;
+  }
+}

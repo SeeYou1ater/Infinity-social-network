@@ -20,6 +20,7 @@
 }
 
 html, body {
+  min-height: 100%;
   background-color: #151515;
   font-size: 20px;
   font-family: "Barlow";
@@ -33,7 +34,7 @@ html, body {
 }
 
 .App__wrapper {
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -43,6 +44,11 @@ input{
   width: 200px;
   padding: 10px;
   border: 2px solid rgba(53, 53, 53, 1);
+}
+#root{
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 
