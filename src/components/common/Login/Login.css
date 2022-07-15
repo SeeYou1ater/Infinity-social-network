@@ -5,10 +5,7 @@
 }
 
 .App__login-form{
-  padding: 15px;
-}
-
-.App__login-form{
+  max-width: 100%;
   padding: 15px;
 }
 
@@ -20,18 +17,21 @@
 }
 
 .App__login-block{
-  padding: 40px;
+  max-width: 100%;
+  padding: 20px;
   background-color: #202020;
   border-radius: 20px;
 }
 
 .App__login-form-inputName{
+  max-width: 100%;
   margin-bottom: 10px;
   display: block;
 }
 
 .App__login-form-inputPassword{
   display: block;
+  max-width: 100%;
   margin-bottom: 10px;
 }
 
@@ -44,10 +44,10 @@
 }
 
 .App__login-form-buttonLogin{
+  width: 100%;
   display: block;
   margin-top: 10px;
   display: block;
-  width: 100%;
   text-align: center;
   padding: 7px;
   background-color: #98FB98;
@@ -56,4 +56,10 @@
   font-weight: 500;
   padding-bottom: 9px;
   color: black;
+}
+
+@media (max-width: 370px) {
+  .App__login-block {
+    padding: 20px 5px 20px 5px;
+  }
 }

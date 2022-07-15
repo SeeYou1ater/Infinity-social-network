@@ -1,6 +1,15 @@
 .App__guestpage {
-  min-width: 700px;
   align-items: center;
   display: flex;
   justify-content: space-between;
+}
+
+.App__guestpage-content {
+  padding: 10px;
+}
+
+@media (max-width: 370px) {
+  .App__guestpage-content {
+    display: none;
+  }
 }

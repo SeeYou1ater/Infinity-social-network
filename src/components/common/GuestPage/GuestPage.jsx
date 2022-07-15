@@ -11,7 +11,7 @@ class GuestPage extends React.Component {
           <HeaderContainer/>
             <div className='main__wrapper'>
               <div className='App__guestpage container'>
-                <div></div>
+                <div className='App__guestpage-content'>Here, will be content for guest</div>
                 <ContainerLogin/>
               </div>
             </div>
