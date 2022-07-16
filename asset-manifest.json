@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/Infinity-social-network/static/css/main.29405ff5.css",
-    "main.js": "/Infinity-social-network/static/js/main.a3c70045.js",
+    "main.css": "/Infinity-social-network/static/css/main.4caca567.css",
+    "main.js": "/Infinity-social-network/static/js/main.4fcbd639.js",
     "static/css/6.6ba48360.chunk.css": "/Infinity-social-network/static/css/6.6ba48360.chunk.css",
     "static/js/6.4a75e7b8.chunk.js": "/Infinity-social-network/static/js/6.4a75e7b8.chunk.js",
     "static/css/310.36740cf0.chunk.css": "/Infinity-social-network/static/css/310.36740cf0.chunk.css",
-    "static/js/310.e7d2e7b3.chunk.js": "/Infinity-social-network/static/js/310.e7d2e7b3.chunk.js",
+    "static/js/310.c69581f0.chunk.js": "/Infinity-social-network/static/js/310.c69581f0.chunk.js",
     "static/media/logo.png": "/Infinity-social-network/static/media/logo.95ba6fcb53682a6f8a78.png",
     "static/media/BarlowCondensed-Medium.ttf": "/Infinity-social-network/static/media/BarlowCondensed-Medium.2afd924bd5156ee485b9.ttf",
     "static/media/BarlowCondensed-Light.ttf": "/Infinity-social-network/static/media/BarlowCondensed-Light.3ba02bbdeb04e17f34bf.ttf",
@@ -23,15 +23,15 @@
     "static/media/no-photo.jpg": "/Infinity-social-network/static/media/no-photo.3b94960cd25f3e97ad0c.jpg",
     "static/media/infinity-progress.svg": "/Infinity-social-network/static/media/infinity-progress.0a114c8ef1aede21d4125dc8717e2539.svg",
     "index.html": "/Infinity-social-network/index.html",
-    "main.29405ff5.css.map": "/Infinity-social-network/static/css/main.29405ff5.css.map",
-    "main.a3c70045.js.map": "/Infinity-social-network/static/js/main.a3c70045.js.map",
+    "main.4caca567.css.map": "/Infinity-social-network/static/css/main.4caca567.css.map",
+    "main.4fcbd639.js.map": "/Infinity-social-network/static/js/main.4fcbd639.js.map",
     "6.6ba48360.chunk.css.map": "/Infinity-social-network/static/css/6.6ba48360.chunk.css.map",
     "6.4a75e7b8.chunk.js.map": "/Infinity-social-network/static/js/6.4a75e7b8.chunk.js.map",
     "310.36740cf0.chunk.css.map": "/Infinity-social-network/static/css/310.36740cf0.chunk.css.map",
-    "310.e7d2e7b3.chunk.js.map": "/Infinity-social-network/static/js/310.e7d2e7b3.chunk.js.map"
+    "310.c69581f0.chunk.js.map": "/Infinity-social-network/static/js/310.c69581f0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.29405ff5.css",
-    "static/js/main.a3c70045.js"
+    "static/css/main.4caca567.css",
+    "static/js/main.4fcbd639.js"
   ]
 }
