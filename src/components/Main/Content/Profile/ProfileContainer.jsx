@@ -27,7 +27,6 @@ class ProfileContainer extends React.Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.router.params.profileId !== this.props.router.params.profileId) {
       this.refreshPage()
-      console.log('hi')
     }
   }
 
@@ -36,6 +35,7 @@ class ProfileContainer extends React.Component {
     return (
     <div className='App__profile'>
       <Profile  dataProfile = {this.props.dataProfile}
+                owner={this.props.profileId}
                 isAuth={this.props.isAuth}
                 status={this.props.status}
                 updateStatus={this.props.updateStatus}/>

@@ -9,10 +9,10 @@ function Header (props) {
   return (
       <header className='App__header'>
         <div className="header__container container">
-          <div className='header__logoup'>
-            <img className='logo' src={logo} alt="#" />
-            <h1>INFINITY</h1>
-          </div>
+            <NavLink className='header__logoup' to={'/'}>
+              <img className='logo' src={logo} alt="#" />
+              <h1>INFINITY</h1>
+            </NavLink> 
           <div className='login-block'>
              { props.isAuth 
               ? <div className='login-items'>

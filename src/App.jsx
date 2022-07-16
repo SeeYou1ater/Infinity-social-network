@@ -8,7 +8,7 @@ import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { initializeApp } from './redux/appReducer';
-import { BrowserRouter, HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import store from './redux/redux-store';
 import Footer from './components/Footer/Footer';
 import GuestPage from './components/common/GuestPage/GuestPage';
@@ -23,27 +23,15 @@ class App extends React.Component {
   render () {
     if (!this.props.initializedApp) { 
       return <Preloader/>
-    } else if (!this.props.isAuth) { 
-      return  (
-        <>
-          <Routes>
-            <Route path="/guestpage" element={<GuestPage/>}/>
-            <Route path="/login" element={<>
-                                            <HeaderContainer/>
-                                              <div className='main__wrapper'>
-                                                <ContainerLogin/>
-                                              </div>
-                                            <Footer/>
-                                          </>}/>
-            <Route path="/*" element={<Navigate to='/guestpage'/>}/>
-          </Routes>
-        </>
-      ) 
     } else return (
       <>
           <HeaderContainer/>
-            <div className='main__wrapper'>
-              <Main state={this.props.state}/>
+          <div className='main__wrapper'>
+            <Routes>            
+                <Route path="/*" element={<Main state={this.props.state}/>}/>
+                <Route path="/guestpage" element={<GuestPage/>}/>
+                <Route path="/login" element={<ContainerLogin/>}/>  
+            </Routes>
             </div>
           <Footer/>
       </>
