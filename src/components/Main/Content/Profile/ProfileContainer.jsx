@@ -2,8 +2,7 @@ import React from 'react';
 import './Profile.css';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setUserProfileThunkCreator, setUserStatusThunkCreator, updateStatusThunkCreator } from '../../../../redux/profileReducer';
-import { ConnectedWithAuthRedirect } from '../../../../hoc/connectedWithAuthRedirect';
+import { savePhotoThunkCreator, setUserProfileThunkCreator, setUserStatusThunkCreator, updateStatusThunkCreator } from '../../../../redux/profileReducer';
 import { withRouter } from '../../../../hoc/withRouter';
 import { compose } from 'redux';
 import { Navigate } from 'react-router-dom';
@@ -35,7 +34,8 @@ class ProfileContainer extends React.Component {
     return (
     <div className='App__profile'>
       <Profile  dataProfile = {this.props.dataProfile}
-                owner={this.props.profileId}
+                isOwner={Number(this.props.router.params.profileId) === this.props.authorizedUserId}
+                savePhoto={this.props.savePhoto}
                 isAuth={this.props.isAuth}
                 status={this.props.status}
                 updateStatus={this.props.updateStatus}/>
@@ -62,11 +62,13 @@ let mapDispatchToProps = (dispatch) => ({
   },
   updateStatus: (status) => {
     dispatch(updateStatusThunkCreator(status))
+  },
+  savePhoto: (filePhoto) => {
+    dispatch(savePhotoThunkCreator(filePhoto))
   }
 })
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withRouter)
-  //ConnectedWithAuthRedirect
   (ProfileContainer)

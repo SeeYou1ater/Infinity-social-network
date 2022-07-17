@@ -9,21 +9,21 @@ const instance = axios.create({
 })
 
 export const UsersAPI = {
-  getUsers(currentPage = 1, pageSize = 5){
+  getUsers(currentPage = 1, pageSize = 5) {
     return instance
               .get(`users?page=${currentPage}&count=${pageSize}`)
               .then(response => { 
                 return response.data
               })
   },
-  followUser(userId){
+  followUser(userId) {
     return instance
               .post(`follow/${userId}`)
               .then(response => { 
                 return response.data
               })
   },
-  unfollowUser(userId){
+  unfollowUser(userId) {
     return instance
               .delete(`follow/${userId}`)
               .then(response => { 
@@ -33,14 +33,14 @@ export const UsersAPI = {
 }
 
 export const authAPI = {
-  authMe(){
+  authMe() {
     return instance
               .get(`auth/me`)
               .then(response => {
                 return response.data
               })
   },
-  login(email, password, rememberMe = false){
+  login(email, password, rememberMe = false) {
     return instance
               .post('auth/login', { email, password, rememberMe})
               .then(response => {
@@ -57,23 +57,32 @@ export const authAPI = {
 }
 
 export const profileAPI = {
-  getProfile(profileId){
+  getProfile(profileId) {
     return instance
           .get(`profile/${profileId}`)
           .then((response) => {
             return response.data
           })
   },
-  getStatus(profileId){
+  getStatus(profileId) {
     return instance
           .get(`profile/status/${profileId}`)
           .then((response) => {
             return response.data
           })
   },
-  updateStatus(status){
+  updateStatus(status) {
     return instance 
           .put(`profile/status/`, {status: status})
+          .then((response) => {
+            return response.data
+          })
+  },
+  savePhoto(filePhoto) {
+    let dataFile = new FormData()
+    dataFile.append('image', filePhoto);
+    return instance
+          .put('profile/photo/', dataFile, {headers: {'Content-Type': 'multipart/form-data'}})
           .then((response) => {
             return response.data
           })

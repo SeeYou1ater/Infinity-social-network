@@ -3,7 +3,8 @@ import { profileAPI } from "../api/api";
 const SET_USER_PROFILE = 'SET_USER_PROFILE',
       ADD_POST = 'ADD-POST',
       SET_STATUS = 'SET_STATUS',
-      DELETE_POST = 'DELETE_POST';
+      DELETE_POST = 'DELETE_POST',
+      SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 
 let initialState = {
@@ -42,6 +43,13 @@ export const setStatusProfileActionCreator = (status) => {
   }
 }
 
+export const savePhotoSuccess = (photos) => {
+  return {
+    type: SAVE_PHOTO_SUCCESS,
+    photos: photos
+  }
+}
+
 export const setUserProfileThunkCreator = (profileId) => {
   return async (dispatch) => {
     let data = await profileAPI.getProfile(profileId)
@@ -61,6 +69,14 @@ export const updateStatusThunkCreator = (status) => {
     let data = await profileAPI.updateStatus(status)
       if (data.resultCode === 0)
       dispatch(setStatusProfileActionCreator(status))
+  }
+}
+
+export const savePhotoThunkCreator = (filePhoto) => {
+  return async (dispatch) => {
+    let data = await profileAPI.savePhoto(filePhoto)
+      if (data.resultCode === 0)
+      dispatch(savePhotoSuccess(data.data.photos))
   }
 }
 
@@ -91,6 +107,11 @@ const profileReducer = (state = initialState, action) => {
 
     case DELETE_POST: {
       let stateCopy = {...state, dataPosts: state.dataPosts.filter(p => p.id !== action.postId)}
+      return stateCopy
+    }
+
+    case SAVE_PHOTO_SUCCESS: {
+      let stateCopy = {...state, profile: {...state.profile, photos: action.photos}}
       return stateCopy
     }
 
