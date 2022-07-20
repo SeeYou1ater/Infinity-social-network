@@ -34,7 +34,7 @@ export const loginThunkCreator = (login, password, rememberMe) => {
         if (data.resultCode === 0) {
             dispatch(isAuthThunkCreator())
           } else {
-            dispatch(stopSubmit('login', {_error: data.messages}))
+            dispatch(stopSubmit('login', {_error: data.messages[0]}))
           }
   }
 }

@@ -86,5 +86,12 @@ export const profileAPI = {
           .then((response) => {
             return response.data
           })
+  },
+  saveProfile(editDataAboutMe) {
+    return instance
+          .put('profile/', editDataAboutMe)
+          .then((response) => {
+            return response.data
+          })
   }
 }

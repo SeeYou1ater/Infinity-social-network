@@ -11,7 +11,7 @@ function Profile(props) {
   
   return (
     <div className='App__profile'>
-      <Description savePhoto={props.savePhoto} isOwner={props.isOwner} profile={props.dataProfile.profile} status={props.status} updateStatus={props.updateStatus}/>
+      <Description saveProfile={props.saveProfile} savePhoto={props.savePhoto} isOwner={props.isOwner} profile={props.dataProfile.profile} status={props.status} updateStatus={props.updateStatus}/>
       <MyPostsContainer   dataProfile = {props.dataProfile}/> 
       </div>
   )}

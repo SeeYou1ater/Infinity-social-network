@@ -8,19 +8,21 @@ import Post from './Post/Post';
 
 function MyPosts(props) {
 
-  const postsItems = props.posts.map((post) => <Post message={post.message} likes = {post.likes}/>)
+  const postsItems = props.posts.map((post) => <Post key={post.id} message={post.message} likes = {post.likes}/>)
 
   let addPost = (dataFormMessage) => {
     props.addPost(dataFormMessage.post)
   }
 
   return (
-    <div>
-      <div className='posts'>
-        My posts
+    <div className='App__posts-info'>
+      <div className='App__posts-form'>
+        <h3>My posts</h3>    
         <NewPostReduxForm onSubmit={addPost}/>
       </div>
-      {postsItems}
+      <div className='App__post-items'>
+        {postsItems}
+      </div>
     </div> 
   )}
 

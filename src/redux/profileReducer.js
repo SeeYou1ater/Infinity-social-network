@@ -1,10 +1,12 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE',
       ADD_POST = 'ADD-POST',
       SET_STATUS = 'SET_STATUS',
       DELETE_POST = 'DELETE_POST',
-      SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
+      SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS',
+      SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS';
 
 
 let initialState = {
@@ -50,6 +52,13 @@ export const savePhotoSuccess = (photos) => {
   }
 }
 
+export const saveProfileSuccess = (dataProfile) => {
+  return {
+    type: SAVE_PROFILE_SUCCESS,
+    dataProfile: dataProfile
+  }
+}
+
 export const setUserProfileThunkCreator = (profileId) => {
   return async (dispatch) => {
     let data = await profileAPI.getProfile(profileId)
@@ -67,16 +76,31 @@ export const setUserStatusThunkCreator = (profileId) => {
 export const updateStatusThunkCreator = (status) => {
   return async (dispatch) => {
     let data = await profileAPI.updateStatus(status)
-      if (data.resultCode === 0)
+      if (data.resultCode === 0) {
       dispatch(setStatusProfileActionCreator(status))
+    }
   }
 }
 
 export const savePhotoThunkCreator = (filePhoto) => {
   return async (dispatch) => {
     let data = await profileAPI.savePhoto(filePhoto)
-      if (data.resultCode === 0)
+      if (data.resultCode === 0) {
       dispatch(savePhotoSuccess(data.data.photos))
+    }
+  }
+}
+
+export const saveProfileThunkCreator = (editDataAboutMe) => {
+  return async (dispatch, getState) => {
+    const authUserId = getState().auth.id
+    const data = await profileAPI.saveProfile(editDataAboutMe)
+      if (data.resultCode === 0) {
+        dispatch(setUserProfileThunkCreator(authUserId))  
+    } else {
+        dispatch(stopSubmit('AboutMeEditForm', {_error: data.messages[0]}))
+        return Promise.reject()
+    }
   }
 }
 
@@ -112,6 +136,11 @@ const profileReducer = (state = initialState, action) => {
 
     case SAVE_PHOTO_SUCCESS: {
       let stateCopy = {...state, profile: {...state.profile, photos: action.photos}}
+      return stateCopy
+    }
+
+    case SAVE_PROFILE_SUCCESS: {
+      let stateCopy = {...state, profile: action.dataProfile}
       return stateCopy
     }
 

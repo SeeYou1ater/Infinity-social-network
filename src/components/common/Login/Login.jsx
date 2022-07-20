@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
   render() {
     return (
         <form onSubmit={this.props.handleSubmit} className='App__login-form' action="">
-            <Field className='App__login-form-inputName' component={FormControl} validate={[requiredField]} formType={'input'} type="text" name={'login'} placeholder={"login"}/>
+            <Field className='App__login-form-inputName' component={FormControl} validate={[requiredField]} formType={'input'} type="text" name={'login'} placeholder={"Login"}/>
             <Field className='App__login-form-inputPassword' component={FormControl} validate={[requiredField]} formType={'input'} type="password" name={'password'} placeholder={"password"}/>
             <p className="App__login-form-input-rememberMe-text">Remember me</p>
             <Field className='App__login-form-input-rememberMe' component={FormControl} name={'rememberMe'} type="checkbox" formType={'input'}/>

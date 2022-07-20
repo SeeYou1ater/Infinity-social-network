@@ -6,10 +6,10 @@ import MyPosts from './MyPosts';
 class MyPostsContainer extends React.Component {
   render() {
     return (
-      <div>
+      <>
         <MyPosts  posts={this.props.posts} 
                   addPost={this.props.addPost}/>
-      </div>
+      </>
     )
   }
 }

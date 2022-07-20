@@ -1,0 +1,8 @@
+.App__status-wrapper {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.App__profileStatus {
+  padding: 10px;
+}

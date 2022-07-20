@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './Status.css';
 
 
 function ProfileStatusWithHooks(props) {
@@ -24,9 +25,9 @@ function ProfileStatusWithHooks(props) {
   }
 
   return (
-    <div className='status-wrapper'>
+    <div className='App__status-wrapper'>
       {!editMode ?
-      <div className='status'>
+      <div className='App__profileStatus'>
         <span onDoubleClick={ activateEditMode }>{ props.status || 'No status' }</span>
         <button onClick={ activateEditMode }>Change</button>
       </div> :
