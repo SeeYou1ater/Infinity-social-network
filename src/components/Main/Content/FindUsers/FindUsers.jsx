@@ -8,7 +8,8 @@ function FindUsers(props) {
         <section className='App__friends'>
           <ul>
           {props.dataUsers.map((user) =>
-            <User user={user} 
+            <User key={user.id}
+                  user={user} 
                   onUnfollow={props.onUnfollow} 
                   onFollow={props.onFollow}
                   followingInProgress={props.followingInProgress}/>)}

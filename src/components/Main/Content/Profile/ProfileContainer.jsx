@@ -2,7 +2,7 @@ import React from 'react';
 import './Profile.css';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { savePhotoThunkCreator, saveProfileThunkCreator, setUserProfileThunkCreator, setUserStatusThunkCreator, updateStatusThunkCreator } from '../../../../redux/profileReducer';
+import { savePhotoThunkCreator, setUserProfileThunkCreator, setUserStatusThunkCreator, updateStatusThunkCreator } from '../../../../redux/profileReducer';
 import { withRouter } from '../../../../hoc/withRouter';
 import { compose } from 'redux';
 import { Navigate } from 'react-router-dom';
@@ -23,7 +23,7 @@ class ProfileContainer extends React.Component {
     this.refreshPage()
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps) {
     if (prevProps.router.params.profileId !== this.props.router.params.profileId) {
       this.refreshPage()
     }
@@ -33,8 +33,7 @@ class ProfileContainer extends React.Component {
     if (this.props.authorizedUserId === null) { return <Navigate to='/login'/> }
     return (
     <div className='App__profile'>
-      <Profile  saveProfile={this.props.saveProfile}
-                dataProfile = {this.props.dataProfile}
+      <Profile  dataProfile = {this.props.dataProfile}
                 isOwner={Number(this.props.router.params.profileId) === this.props.authorizedUserId}
                 savePhoto={this.props.savePhoto}
                 isAuth={this.props.isAuth}
@@ -67,9 +66,6 @@ let mapDispatchToProps = (dispatch) => ({
   savePhoto: (filePhoto) => {
     dispatch(savePhotoThunkCreator(filePhoto))
   },
-  saveProfile: (editDataAboutMe) => {
-    return dispatch(saveProfileThunkCreator(editDataAboutMe))
-  }
 })
 
 export default compose(

@@ -1,15 +1,16 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './AboutMe.css';
-import ContactItem from './Contactitem/ContactItem';
+import ContactItem from './ContactItem/ContactItem';
 
 function AboutMe(props) {
   return (
     <div className='App__description-aboutMeform'>
-      { props.isOwner && <button onClick={props.activateProfileEditMode}>Edit profile</button> }
+      { props.isOwner && <NavLink to='/settings'>Edit profile</NavLink>}
       <div className='App__description-aboutMe-list'>
         <div>
           <h3>Full name: {props.profile.fullName}</h3>
-        </div >
+        </div>
         <div>
           <h3><b>Contacts:</b></h3>
           <div className='App__contacts-list'>

@@ -2,7 +2,6 @@ import React from "react";
 import { reduxForm } from "redux-form";
 import { Field } from "redux-form";
 import { FormControl } from "../../../../../../common/FormControls/FormControls";
-import ContactItem from "../Contactitem/ContactItem";
 import './AboutMeEditForm.css';
 
 
@@ -19,7 +18,7 @@ function AboutMeEditForm(props) {
         <div>
           <h3><b>Contacts:</b></h3>
           <div>
-            { Object.keys(props.profile.contacts).map( key => { return <div>{key}:<Field className="App__editMode-contact-input" key={key} component={FormControl} validators={[]} formType={'input'} type="text" name={'contacts.' + key} placeholder={key}/></div>}) }
+            { Object.keys(props.profile.contacts).map( key => { return <div key={key}>{key}:<Field className="App__editMode-contact-input" component={FormControl} validators={[]} formType={'input'} type="text" name={'contacts.' + key} placeholder={key}/></div>}) }
           </div>
         </div>
         <div>
