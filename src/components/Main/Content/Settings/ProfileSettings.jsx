@@ -3,19 +3,19 @@ import { Navigate } from "react-router-dom";
 import { reduxForm } from "redux-form";
 import { Field } from "redux-form";
 import { FormControl } from "../../../common/FormControls/FormControls";
+import Preloader from "../../../common/Preloader/Preloader";
 import './ProfileSettings.css';
 
 function ProfileSettings(props) {
 
   useEffect( () => {
-    
-  })
+    props.setUserProfile(props.authUserId)
+  }, [])
 
-  if (props.profile === null && props.authUserId === null) { 
+  if (props.profile === null) { return <Preloader/> }
+
+  if (props.authUserId === null) { 
     return <Navigate to={'/login'}/>
-  } else if (props.profile === null) 
-      { 
-    props.setUserProfile(props.authUserId) 
   } else return (
   <form onSubmit={props.handleSubmit}>
     {props.error && <div className="stopSubmit-error">{props.error}</div> }
@@ -23,13 +23,13 @@ function ProfileSettings(props) {
       <div>
         <h3>Full name:</h3>
         <Field className='App__editModeProfileForm-fullName-input' component={FormControl} formType={'input'} type="text" name={'fullName'} placeholder={"Full name"}/>
-      </div >
+      </div>
       <div>
         <h3><b>Contacts:</b></h3>
-        <div>
+         <div>
           { Object.keys(props.profile.contacts).map( key => { return <div key={key}>{key}:<Field className="App__editMode-contact-input" component={FormControl} 
           formType={'input'} type="text" name={'contacts.' + key} placeholder={key}/></div>}) }
-        </div>
+        </div> 
       </div>
       <div>
         <h3><b>Looking for a job:</b></h3>
