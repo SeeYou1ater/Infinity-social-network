@@ -15,7 +15,7 @@ function FindUsers(props) {
                   followingInProgress={props.followingInProgress}/>)}
           </ul>
     
-          <button onClick={() => { props.showMoreUsers(props.currentPage + 1, props.pageSize) }}>Show more</button>
+          <button className='App__findUsers__showMoreButton' onClick={() => { props.showMoreUsers(props.currentPage + 1, props.pageSize) }}>Show more</button>
     
         </section>
       )

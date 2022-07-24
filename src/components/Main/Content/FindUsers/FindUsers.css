@@ -1,0 +1,13 @@
+.App__findUsers__showMoreButton {
+  margin-top: 10px;
+  padding: 10px 25px 10px 25px;
+  background-image: linear-gradient(43deg, rgba(49, 46, 196, 1) 40%, rgba(200, 80, 192, 1) 100%);
+  border-radius: 10px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.App__findUsers__showMoreButton:hover {
+  background-image: linear-gradient(43deg, rgba(43, 42, 117, 1) 40%, rgba(200, 80, 192, 1) 100%);
+}
+

@@ -40,16 +40,7 @@
   width: 15px;
 }
 
-.App__button-login{
-  display: inline-block;
-  width: 70px;
-  text-align: center;
-  padding: 7px;
-  background-color: #98FB98;
-  border-radius: 5px;
+.App__button-login.green-button {
   font-size: 18px;
-  font-weight: 500;
-  padding-bottom: 9px;
-  color: black;
 }
 

@@ -44,7 +44,7 @@ function ProfileSettings(props) {
         <Field className='App__editModeProfileForm-textarea-input' component={FormControl} formType={'textarea'} type="text" name={'lookingForAJobDescription'} placeholder={"You can write something here about your professional skills..."}/>
       </div>   
     </div>
-    <button>Save</button>
+    <button className="App__editModeProfileForm-buttonSave">Save</button>
   </form>
 )}
 

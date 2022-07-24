@@ -19,7 +19,7 @@ function Header (props) {
                   <div>{props.login}</div>
                   <img className='App__button-logout' src={Applogout} onClick={props.logout} alt="" />
                 </div>  
-              : <NavLink className='App__button-login' to={'/login'}>Login</NavLink> }
+              : <NavLink className='App__button-login green-button' to={'/login'}>Login</NavLink> }
           </div>
         </div>
       </header>

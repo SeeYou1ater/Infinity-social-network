@@ -43,19 +43,24 @@
   display: inline-block;
 }
 
-.App__login-form-buttonLogin{
-  width: 100%;
-  display: block;
-  margin-top: 10px;
-  display: block;
+.green-button{
   text-align: center;
   padding: 7px;
-  background-color: #98FB98;
+  background-color: rgba(152, 251, 152, 1);
   border-radius: 5px;
   font-size: 18px;
   font-weight: 500;
   padding-bottom: 9px;
   color: black;
+}
+
+.App__login-form-buttonLogin {
+  margin-top: 10px;
+  display: block;
+}
+
+.green-button:hover {
+  background-color:  rgba(130, 200, 130, 1);
 }
 
 @media (max-width: 370px) {

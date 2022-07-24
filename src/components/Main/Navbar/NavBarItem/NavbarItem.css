@@ -5,7 +5,7 @@
 
 
 .item:focus{
-  background-image: linear-gradient(43deg, rgba(65, 88, 208, 0.8) 0%, rgba(200, 80, 192, 0.8) 100%);
+  background-image: linear-gradient(43deg, rgba(49, 46, 196, 1) 30%, rgba(200, 80, 192, 1) 100%);
 }
 
 .item-image {

@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
             <p className="App__login-form-input-rememberMe-text">Remember me</p>
             <Field className='App__login-form-input-rememberMe' component={FormControl} name={'rememberMe'} type="checkbox" formType={'input'}/>
              {this.props.error && <div className="stopSubmit-error">{this.props.error}</div> }
-            <button className="App__login-form-buttonLogin">Log in</button>
+            <button className="App__login-form-buttonLogin green-button">Log in</button>
         </form>
     )
   }

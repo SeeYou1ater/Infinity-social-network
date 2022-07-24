@@ -9,9 +9,6 @@ function AboutMe(props) {
       { props.isOwner && <NavLink to='/settings'>Edit profile</NavLink>}
       <div className='App__description-aboutMe-list'>
         <div>
-          <h3>Full name: {props.profile.fullName}</h3>
-        </div>
-        <div>
           <h3><b>Contacts:</b></h3>
           <div className='App__contacts-list'>
             { Object.keys(props.profile.contacts).map( key => { return <ContactItem key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>}) }

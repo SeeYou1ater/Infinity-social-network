@@ -15,6 +15,7 @@ function Description(props) {
       <>
         <img className='photo' src={props.profile.photos.large || noPhoto} alt="#" />
         { props.isOwner && <input type='file' onChange={onMainPhotoSelected} /> }
+          <h3>{props.profile.fullName}</h3>
         <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
         <AboutMe isOwner={props.isOwner} profile={props.profile}/>
       </>

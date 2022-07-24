@@ -10,12 +10,12 @@ function User(props) {
             <div className='App__friends-itemPreview'>
               <NavLink to={'/profile/' + user.id}><div className='App__friends-itemPhoto'><img className='App__users-photo' src={ noPhoto || user.photos.small} alt="#" /></div>
               </NavLink>
-              {user.followed? <button onClick={() => {
+              {user.followed? <button  onClick={() => {
                               props.onUnfollow(user.id)       
-                            }} className='App__buttonUnFollow' disabled = {props.followingInProgress.some(id => id === user.id)}>UnFollow</button> 
+                            }} className='App__button-UnFollow' disabled = {props.followingInProgress.some(id => id === user.id)}>UnFollow</button> 
                             : <button onClick={() => {
                               props.onFollow(user.id)
-                              }} className='App__buttonFollow' disabled = {props.followingInProgress.some(id => id === user.id)}>Follow</button>}
+                              }} className='App__button-Follow' disabled = {props.followingInProgress.some(id => id === user.id)}>Follow</button>}
             </div>
             <div className='App__friends-info'>
               <div className='App_friends-fullname'>{user.name}</div>
