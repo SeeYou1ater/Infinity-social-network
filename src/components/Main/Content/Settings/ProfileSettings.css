@@ -1,3 +1,68 @@
+.App__editModeProfileForm-block > div{
+  border-bottom: 1px solid rgba(53, 53, 53, 1);
+  padding: 40px;
+}
+
 .App__editModeProfileForm-fullFormError {
   color: red;
+}
+
+.App__editModeProfileForm-fullName-input {
+  border-radius: 10px;
+  width: 300px;
+  font-size: 18px;
+}
+
+.App__editModeProfileForm-contacts-block {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+}
+
+.App__editModeProfileForm-title {
+  margin-right: 142px;
+  font-size: 22px;
+  display: inline-block;
+}
+
+.App__editModeProfileForm-contact-block {
+  width: 100%;
+}
+
+.App__editModeProfileForm-contacts-title {
+  margin-bottom: 20px;
+}
+
+.App__editModeProfileForm-contacts-block > div{
+  padding: 20px;
+}
+
+.App__editModeProfileForm-contact-input {
+  border-radius: 10px;
+  width: 300px;
+  font-size: 18px;
+}
+
+.App__editModeProfileForm-contact-title {
+  display: inline-block;
+  width: 150px;
+}
+
+.App__editModeProfileForm-textarea-input {
+  border-radius: 15px;
+  width: 600px;
+  height: 200px;
+  resize: none;
+  overflow-y: scroll;
+  padding: 10px;
+  margin-top: 40px;
+}
+
+.App__editModeProfileForm-aboutMe-title {
+  display: inline-block;
+}
+
+.App__editModeProfileForm-lookingForAJobDescription-title {
+  display: inline-block;
 }

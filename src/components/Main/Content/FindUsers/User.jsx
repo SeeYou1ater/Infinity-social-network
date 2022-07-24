@@ -21,8 +21,8 @@ function User(props) {
               <div className='App_friends-fullname'>{user.name}</div>
               <div className='App_friends-status'>{user.status}</div>
               <div className='App_friends-location'>
-                <div className='App__friends-country'>{'Тут будет страна'}</div>
-                <div className='App__friends-city'>{'А тут будет город'}</div>
+                <div className='App__friends-country'>{'Here will be country'}</div>
+                <div className='App__friends-city'>{'Here will be city'}</div>
               </div>
             </div>
           </li>
