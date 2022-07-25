@@ -34,3 +34,14 @@
   right: 50px;
   top: 25px;
 }
+
+.App__description-editProfile {
+  color: aliceblue;
+  text-decoration: underline;
+}
+
+.App__description-editProfile:hover {
+  color: aliceblue;
+  text-decoration: none;
+}
+

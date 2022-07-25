@@ -12,7 +12,7 @@ class Login extends React.Component {
   render() {
     if (this.props.isAuth) { return <Navigate to={`/profile/${this.props.authUserId}`}/>} else {
     return (
-      <div className='App__login-uniform'>
+      <div className='App__login-uniform container'>
         <div className='App__login-block'>
           <h1>
             LOGIN <br /><br />
