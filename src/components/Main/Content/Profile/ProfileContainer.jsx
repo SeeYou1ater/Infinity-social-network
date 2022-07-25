@@ -32,14 +32,14 @@ class ProfileContainer extends React.Component {
   render () {
     if (this.props.authorizedUserId === null) { return <Navigate to='/login'/> }
     return (
-    <div className='App__profile'>
-      <Profile  dataProfile = {this.props.dataProfile}
-                isOwner={Number(this.props.router.params.profileId) === this.props.authorizedUserId}
-                savePhoto={this.props.savePhoto}
-                isAuth={this.props.isAuth}
-                status={this.props.status}
-                updateStatus={this.props.updateStatus}/>
-    </div>
+      <div className='App__profile'>
+        <Profile  dataProfile = {this.props.dataProfile}
+                  isOwner={Number(this.props.router.params.profileId) === this.props.authorizedUserId}
+                  savePhoto={this.props.savePhoto}
+                  isAuth={this.props.isAuth}
+                  status={this.props.status}
+                  updateStatus={this.props.updateStatus}/>
+      </div>
     )
   }
 }

@@ -36,12 +36,12 @@
 }
 
 .App__description-editProfile {
-  color: aliceblue;
+  color: #ffffff;
   text-decoration: underline;
 }
 
 .App__description-editProfile:hover {
-  color: aliceblue;
+  color: #ffffff;
   text-decoration: none;
 }
 

@@ -6,3 +6,7 @@
 .input-changePhoto {
   display: none;
 }
+
+.App__profile-info {
+  display: flex;
+}
