@@ -56,7 +56,7 @@
 
 .App__login-form-buttonLogin {
   margin-top: 10px;
-  display: block;
+  width: 100%;
 }
 
 .green-button:hover {

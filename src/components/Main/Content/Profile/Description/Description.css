@@ -3,6 +3,6 @@
   display: inline-block;
 }
 
-.profile-description {
-  display: inline-block;
+.input-changePhoto {
+  display: none;
 }

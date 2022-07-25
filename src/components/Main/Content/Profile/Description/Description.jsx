@@ -1,6 +1,5 @@
 import './Description.css';
 import noPhoto from './../../../../../assets/images/no-photo.jpg';
-import ProfileStatusWithHooks from './Status/StatusWithHooks';
 import AboutMe from './AboutMe/AboutMe';
 
 function Description(props) {
@@ -14,9 +13,7 @@ function Description(props) {
   return (   
       <>
         <img className='photo' src={props.profile.photos.large || noPhoto} alt="#" />
-        { props.isOwner && <input type='file' onChange={onMainPhotoSelected} /> }
-          <h3>{props.profile.fullName}</h3>
-        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+        {props.isOwner && <input className='input-changePhoto' type='file' onChange={onMainPhotoSelected}/>}
         <AboutMe isOwner={props.isOwner} profile={props.profile}/>
       </>
   )}

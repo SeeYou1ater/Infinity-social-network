@@ -10,10 +10,10 @@ function Profile(props) {
   }
   
   return (
-    <div className='App__profile'>
+    <>
       <Description saveProfile={props.saveProfile} savePhoto={props.savePhoto} isOwner={props.isOwner} profile={props.dataProfile.profile} status={props.status} updateStatus={props.updateStatus}/>
-      <MyPostsContainer   dataProfile = {props.dataProfile}/> 
-      </div>
+      <MyPostsContainer   dataProfile = {props.dataProfile}/>
+    </> 
   )}
   
 export default Profile;

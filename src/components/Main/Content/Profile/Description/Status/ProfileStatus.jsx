@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import './Status.css';
+import './ProfileStatus.css';
 
 
-function ProfileStatusWithHooks(props) {
+function ProfileStatus(props) {
 
   let [editMode, setEditMode] = useState(false)
   let [status, setStatus] = useState(props.status)
@@ -28,8 +28,9 @@ function ProfileStatusWithHooks(props) {
     <div className='App__status-wrapper'>
       {!editMode ?
       <div className='App__profileStatus'>
-        <span onDoubleClick={ activateEditMode }>{ props.status || 'No status' }</span>
-        <button onClick={ activateEditMode }>Change</button>
+        { props.isOwner ? <span onDoubleClick={ activateEditMode }>{ props.status || 'No status' }</span> :
+        <span>{ props.status || 'No status' }</span> }
+        { props.isOwner && <button onClick={ activateEditMode }>Change</button> }
       </div> :
       <div className='status-input'>
         <input onChange={ onStatusChange } autoFocus={true} onBlur={ deactivateEditMode } value={ status }/> 
@@ -39,4 +40,4 @@ function ProfileStatusWithHooks(props) {
 }
 
 
-export default ProfileStatusWithHooks;
+export default ProfileStatus;

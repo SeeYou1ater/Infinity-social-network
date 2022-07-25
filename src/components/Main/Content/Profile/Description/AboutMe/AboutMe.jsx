@@ -1,27 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import ProfileStatus from '../Status/ProfileStatus';
 import './AboutMe.css';
 import ContactItem from './ContactItem/ContactItem';
 
 function AboutMe(props) {
   return (
     <div className='App__description-aboutMeform'>
-      { props.isOwner && <NavLink to='/settings'>Edit profile</NavLink>}
+      <h3 className='App_profile-fullName'>{props.profile.fullName}</h3>
+      <ProfileStatus isOwner={props.isOwner} status={props.status} updateStatus={props.updateStatus}/>
       <div className='App__description-aboutMe-list'>
         <div>
-          <h3><b>Contacts:</b></h3>
+          <p className='App__profile-contacts-title'><b>Contacts:</b></p>
+          { props.isOwner && <NavLink to='/settings'><p className='App__description-editProfile'>Edit profile</p></NavLink>}
           <div className='App__contacts-list'>
             { Object.keys(props.profile.contacts).map( key => { return <ContactItem key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>}) }
           </div>
         </div>
         <div>
-          <h3><b>Looking for a job:</b>{props.profile.lookingForAJob ? 'yes' : 'no'}</h3> 
+          <p><b>Looking for a job:</b>{props.profile.lookingForAJob ? 'yes' : 'no'}</p> 
         </div>
         <div>
-          <h3><b>About me:</b></h3>{props.profile.aboutMe}
+          <p><b>About me:</b></p>{props.profile.aboutMe}
         </div>
         <div>
-          <h3><b>My proffesional skills:</b></h3>{props.profile.lookingForAJobDescription}
+          <p><b>My proffesional skills:</b></p>{props.profile.lookingForAJobDescription}
         </div>   
       </div> 
     </div>

@@ -13,3 +13,24 @@
 .App__contacts-list {
   padding: 20px;
 }
+
+.App__description-aboutMeform {
+  display: inline-block;
+  padding: 0px 20px 5px 30px;
+}
+
+.App_profile-fullName {
+  display: inline-block;
+  font-size: 28px;
+}
+
+.App__profile-contacts-title {
+  display: inline-block;
+}
+
+.App__description-editProfile {
+  display: inline-block;
+  position: absolute;
+  right: 50px;
+  top: 25px;
+}
