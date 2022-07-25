@@ -1,9 +1,10 @@
 .App__nav{
-  padding: 10px;
+  padding: 10px 10px 15px 10px;
   grid-area: nav;
   background-color: #202020;
   border-radius: 20px;
   overflow: hidden;
+  align-self: start;
 }
 
 .item{
