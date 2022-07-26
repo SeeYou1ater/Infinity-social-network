@@ -21,7 +21,7 @@ function Content(props) {
           <Route path="/messages/*" element={<MessagesContainer   dataMessages = {props.state.dataMessages}/>}/>
           <Route path="/friends/*" element={<FriendsContainer/>}/>
           <Route path="/findUsers/*" element={<FindUsersContainer/>}/>
-          <Route path="/settings/" element={<ProfileSettingsContainer/>}/>
+          <Route path="/profile=settings/" element={<ProfileSettingsContainer/>}/>
         </Routes>
       </Suspense>  
     </section>    

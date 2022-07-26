@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './ProfileStatus.css';
+import statusChange from './../../../../../../assets/icons/white/changeStatus.png';
 
 
 function ProfileStatus(props) {
@@ -30,7 +31,7 @@ function ProfileStatus(props) {
       <div className='App__profileStatus'>
         { props.isOwner ? <span onDoubleClick={ activateEditMode }>{ props.status || 'No status' }</span> :
         <span>{ props.status || 'No status' }</span> }
-        { props.isOwner && <button onClick={ activateEditMode }>Change</button> }
+        { props.isOwner && <button className="App__profileStatus-changeButton" onClick={ activateEditMode }><img src={statusChange}/></button> }
       </div> :
       <div className='status-input'>
         <input onChange={ onStatusChange } autoFocus={true} onBlur={ deactivateEditMode } value={ status }/> 

@@ -17,9 +17,10 @@
 .App__description-aboutMeform {
   display: inline-block;
   padding: 0px 20px 5px 30px;
+  width: 100%;
 }
 
-.App_profile-fullName {
+.App__profile-fullName {
   display: inline-block;
   font-size: 28px;
 }
@@ -45,3 +46,21 @@
   text-decoration: none;
 }
 
+.App__description-aboutMeform > div:not(:last-child){
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(53, 53, 53, 1);
+}
+
+.App__description-aboutMeform > div:nth-child(2){
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(53, 53, 53, 1);
+}
+
+.App__description-aboutMeform-valueItem {
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.App__description-aboutMeform-item {
+  padding-top: 30px;
+}

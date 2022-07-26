@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../logo.png';
 import './Header.css';
-import Applogout from './../../assets/icons/white/appLogout.png'
+import Applogout from './../../assets/icons/white/appLogout.png';
 
 function Header (props) {
   

@@ -1,0 +1,8 @@
+.App__contacts-value {
+  display: inline-block;
+}
+
+.App__contacts-item {
+  width: 100px;
+  display: inline-block;
+}

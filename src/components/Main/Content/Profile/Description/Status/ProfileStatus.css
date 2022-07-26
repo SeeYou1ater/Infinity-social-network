@@ -1,7 +1,14 @@
-.App__status-wrapper {
-  display: block;
+.App__profileStatus {
+  padding: 10px 10px 0 0;
+  display: flex;
 }
 
-.App__profileStatus {
-  padding: 10px 10px 10px 0;
+.App__profileStatus-changeButton {
+  width: 15px;
+  background-color: inherit;
+  margin-left: 10px;
+}
+
+.App__profileStatus-changeButton > img{
+  width: 100%;
 }
