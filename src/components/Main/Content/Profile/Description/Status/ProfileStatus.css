@@ -1,6 +1,9 @@
 .App__profileStatus {
-  padding: 10px 10px 0 0;
+  padding-top: 14px;
   display: flex;
+  font-size: 18px;
+  line-height: 15px;
+  margin-bottom: 6px;
 }
 
 .App__profileStatus-changeButton {
@@ -11,4 +14,13 @@
 
 .App__profileStatus-changeButton > img{
   width: 100%;
+}
+
+.App__status-input {
+  margin-top: 12px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: inherit;
+  color: #ffffff;
+  font-size: 12px;
 }
