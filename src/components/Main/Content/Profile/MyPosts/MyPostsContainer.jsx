@@ -7,7 +7,8 @@ class MyPostsContainer extends React.Component {
   render() {
     return (
       <>
-        <MyPosts  posts={this.props.posts} 
+        <MyPosts  isOwner={this.props.isOwner}
+                  posts={this.props.posts} 
                   addPost={this.props.addPost}/>
       </>
     )

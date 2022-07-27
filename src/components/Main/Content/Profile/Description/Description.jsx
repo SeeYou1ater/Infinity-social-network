@@ -13,11 +13,11 @@ function Description(props) {
 
   return (   
       <div className='App__profile-info'>
-        <div>
+        <div className='App__profile-first-block'>
           <div className='App__profile-photo-block'>
             <img className='App__profile-photo' src={props.profile.photos.large || noPhoto} alt="#" />
-            {props.isOwner && <input id='input-changePhoto' className='input-changePhoto' type='file' onChange={onMainPhotoSelected}/>}
-            <label htmlFor='input-changePhoto'><img className='App__profile-photo-change' src={uploadPhoto} alt="" /></label>
+            <input id='input-changePhoto' className='input-changePhoto' type='file' onChange={onMainPhotoSelected}/>
+            { props.isOwner && <label htmlFor='input-changePhoto'><img className='App__profile-photo-change' src={uploadPhoto} alt="" /></label> }
           </div>
         </div>
         <AboutMe isOwner={props.isOwner} profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>

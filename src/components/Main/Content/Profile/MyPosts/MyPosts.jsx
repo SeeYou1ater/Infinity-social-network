@@ -5,6 +5,7 @@ import { MaxLengthCreator } from '../../../../../utilities/validators/validators
 import { FormControl } from '../../../../common/FormControls/FormControls';
 import './MyPosts.css';
 import Post from './Post/Post';
+import addPost from './../../../../../assets/icons/white/addPost.png';
 
 function MyPosts(props) {
 
@@ -17,8 +18,8 @@ function MyPosts(props) {
   return (
     <div className='App__posts-info'>
       <div className='App__posts-form'>
-        <h3>My posts</h3>    
-        <NewPostReduxForm onSubmit={addPost}/>
+        <h3 className='App__posts-title'><b>My posts</b></h3>    
+        { props.isOwner && <NewPostReduxForm onSubmit={addPost}/>} 
       </div>
       <div className='App__post-items'>
         {postsItems}
@@ -31,9 +32,9 @@ function MyPosts(props) {
   class NewPostForm extends React.Component {
     render() {
       return (
-        <form onSubmit={this.props.handleSubmit}>
-          <Field validate={maxLength10} placeholder={'Enter!'} component={FormControl} formType={'textarea'} type={"text"} name={'post'}/>
-          <button>Add post</button>
+        <form className='App__posts-addPost-form' onSubmit={this.props.handleSubmit}>
+          <Field className='App__posts-addPost-textarea' validate={maxLength10} placeholder={'Enter!'} component={FormControl} formType={'textarea'} type={"text"} name={'post'}/>
+          <button className='App__posts-addPost-button'><img src={addPost} alt="" /></button>
         </form>
       )
     }

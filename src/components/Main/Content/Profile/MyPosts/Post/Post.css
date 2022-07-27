@@ -1,0 +1,10 @@
+.App__profile-postItem {
+  margin-bottom: 10px;
+}
+
+.App__profile-likesItem > img{
+  width: 20px;
+  cursor: pointer;
+  margin-right: 7px;
+  margin-top: 2px;
+}
