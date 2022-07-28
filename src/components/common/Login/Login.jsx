@@ -19,7 +19,7 @@ class Login extends React.Component {
 
             Test login and password: <br /><br />  LOGIN: free@samuraijs.com <br /><br /> PASSWORD: free
           </h1>
-          <LoginReduxForm onSubmit={this.props.onSubmit}/>
+          <LoginReduxForm captchaUrl={this.props.captchaUrl} onSubmit={this.props.onSubmit}/>
         </div>
       </div>
     )}
@@ -33,6 +33,8 @@ class LoginForm extends React.Component {
             <Field className='App__login-form-inputName' component={FormControl} validate={[requiredField]} formType={'input'} type="text" name={'login'} placeholder={"Login"}/>
             <Field className='App__login-form-inputPassword' component={FormControl} validate={[requiredField]} formType={'input'} type="password" name={'password'} placeholder={"password"}/>
             <p className="App__login-form-input-rememberMe-text">Remember me</p>
+            { this.props.captchaUrl && <img src={this.props.captchaUrl} alt="" /> }
+            { this.props.captchaUrl && <Field className='App__login-form-inputCaptcha' component={FormControl} validate={[requiredField]} formType={'input'} type="text" name={'captcha'} placeholder={"enter symbols from picture"}/> }
             <Field className='App__login-form-input-rememberMe' component={FormControl} name={'rememberMe'} type="checkbox" formType={'input'}/>
              {this.props.error && <div className="stopSubmit-error">{this.props.error}</div> }
             <button className="App__login-form-buttonLogin green-button">Log in</button>
