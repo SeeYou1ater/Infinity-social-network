@@ -7,7 +7,7 @@ export const ConnectedWithAuthRedirect = (Component) => {
     render(){
       if (!this.props.isAuth) {
         return <Navigate to={'/login'}/>
-      }  else  return <Component  {...this.props}/>
+      }  else return <Component  {...this.props}/>
     }
   }
 

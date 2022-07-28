@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { savePhotoThunkCreator, setUserProfileThunkCreator, setUserStatusThunkCreator, updateStatusThunkCreator } from '../../../../redux/profileReducer';
 import { withRouter } from '../../../../hoc/withRouter';
 import { compose } from 'redux';
-import { Navigate } from 'react-router-dom';
+import { ConnectedWithAuthRedirect } from '../../../../hoc/connectedWithAuthRedirect';
 
 
 
@@ -30,7 +30,6 @@ class ProfileContainer extends React.Component {
   }
 
   render () {
-    if (this.props.authorizedUserId === null) { return <Navigate to='/login'/> }
     return (
       <div className='App__profile'>
         <Profile  dataProfile = {this.props.dataProfile}
@@ -70,5 +69,6 @@ let mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withRouter)
+  withRouter,
+  ConnectedWithAuthRedirect)
   (ProfileContainer)
