@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Infinity-social-network/static/css/main.75e72219.css",
-    "main.js": "/Infinity-social-network/static/js/main.046b4008.js",
+    "main.js": "/Infinity-social-network/static/js/main.4c6e4a69.js",
     "static/css/6.6ba48360.chunk.css": "/Infinity-social-network/static/css/6.6ba48360.chunk.css",
     "static/js/6.45da59d0.chunk.js": "/Infinity-social-network/static/js/6.45da59d0.chunk.js",
     "static/css/313.959a7a1b.chunk.css": "/Infinity-social-network/static/css/313.959a7a1b.chunk.css",
@@ -28,7 +28,7 @@
     "static/media/infinity-progress.svg": "/Infinity-social-network/static/media/infinity-progress.0a114c8ef1aede21d4125dc8717e2539.svg",
     "index.html": "/Infinity-social-network/index.html",
     "main.75e72219.css.map": "/Infinity-social-network/static/css/main.75e72219.css.map",
-    "main.046b4008.js.map": "/Infinity-social-network/static/js/main.046b4008.js.map",
+    "main.4c6e4a69.js.map": "/Infinity-social-network/static/js/main.4c6e4a69.js.map",
     "6.6ba48360.chunk.css.map": "/Infinity-social-network/static/css/6.6ba48360.chunk.css.map",
     "6.45da59d0.chunk.js.map": "/Infinity-social-network/static/js/6.45da59d0.chunk.js.map",
     "313.959a7a1b.chunk.css.map": "/Infinity-social-network/static/css/313.959a7a1b.chunk.css.map",
@@ -36,6 +36,6 @@
   },
   "entrypoints": [
     "static/css/main.75e72219.css",
-    "static/js/main.046b4008.js"
+    "static/js/main.4c6e4a69.js"
   ]
 }
