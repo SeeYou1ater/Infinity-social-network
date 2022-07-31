@@ -65,7 +65,7 @@ export const isAuthThunkCreator = () => {
   }
 }
 
-export const loginThunkCreator = (login: string, password: string, rememberMe: boolean, captcha: string | null) => {
+export const loginThunkCreator = (login: string, password: string, rememberMe: boolean, captcha: null | string) => {
   return async (dispatch: any) => {
     let data = await authAPI.login(login, password, rememberMe, captcha)
         if (data.resultCode === 0) {
