@@ -10,7 +10,7 @@ function ProfileSettings(props) {
 
   useEffect( () => {
     props.setUserProfile(props.authUserId)
-  }, [])
+  }, [props])
 
   if (props.profile === null) { return <Preloader/> }
 

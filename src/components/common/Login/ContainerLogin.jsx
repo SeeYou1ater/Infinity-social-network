@@ -29,7 +29,7 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
   return {
-    login: (login, password, rememberMe, captcha) => {
+    login: (login, password, rememberMe = false, captcha = null) => {
       dispatch(loginThunkCreator(login, password, rememberMe, captcha))
     }
   }

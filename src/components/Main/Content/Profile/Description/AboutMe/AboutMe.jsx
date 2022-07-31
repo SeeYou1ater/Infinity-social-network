@@ -12,7 +12,7 @@ function AboutMe(props) {
       <div className='App__description-aboutMe-list'>
         <div>
           <p className='App__profile-contacts-title'><b>Contacts</b></p>
-          { props.isOwner && <NavLink to='/profile=settings'><p className='App__description-editProfile'>Edit profile</p></NavLink>}
+          { props.isOwner && <NavLink to='/profile-settings'><p className='App__description-editProfile'>Edit profile</p></NavLink>}
           <div className='App__contacts-list'>
             { Object.keys(props.profile.contacts).map( key => { return <ContactItem key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>}) }
           </div>

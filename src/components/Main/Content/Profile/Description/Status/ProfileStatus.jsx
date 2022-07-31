@@ -31,7 +31,7 @@ function ProfileStatus(props) {
       <div className='App__profileStatus'>
         { props.isOwner ? <span onDoubleClick={ activateEditMode }>{ props.status || 'No status' }</span> :
         <span>{ props.status || 'No status' }</span> }
-        { props.isOwner && <button className="App__profileStatus-changeButton" onClick={ activateEditMode }><img src={statusChange}/></button> }
+        { props.isOwner && <button className="App__profileStatus-changeButton" onClick={ activateEditMode }><img src={statusChange} alt='#'/></button> }
       </div> :
       <div className='App__status-input-block'>
         <input className='App__status-input' onChange={ onStatusChange } autoFocus={true} onBlur={ deactivateEditMode } value={ status }/> 

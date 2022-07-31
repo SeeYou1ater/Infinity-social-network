@@ -4,8 +4,15 @@ import { authAPI, securityAPI } from "../api/api";
 const SET_USER_DATA = 'SET_USER_DATA',
       GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS';
 
+type initialStateType = {
+  id: number | null
+  email: string | null
+  login: string | null
+  isAuth: false
+  captchaUrl: string | null
+}
 
-let initialState = {
+let initialState: initialStateType = {
   id: null,
   email: null,
   login: null,
@@ -13,22 +20,43 @@ let initialState = {
   captchaUrl: null,
 }
 
-export const setUserDataActionCreator = (id, email, login, isAuth) => {
+type setUserDataActionCreatorUserDataType = {
+  id: number | null
+  email: string | null
+  login: string | null
+  isAuth: boolean
+}
+
+type setUserDataActionCreatorType = {
+  type: typeof SET_USER_DATA
+  userData: setUserDataActionCreatorUserDataType
+}
+
+export const setUserDataActionCreator = (id: number | null, email: string | null, login: string | null, isAuth: boolean): setUserDataActionCreatorType => {
   return {
     type: SET_USER_DATA,
     userData: {id, email, login, isAuth}
   }
 }
 
-export const getCaptchaUrlSuccess = (url) => {
+type getCaptchaUrlSuccessType = {
+  type: typeof GET_CAPTCHA_URL_SUCCESS
+  url:  { url: string } 
+}
+
+type objectUrlType = {
+  url: string
+}
+
+export const getCaptchaUrlSuccessActionCreator = (url: objectUrlType): getCaptchaUrlSuccessType => {
   return {
     type: GET_CAPTCHA_URL_SUCCESS,
-    url: url
+    url: url 
   }
 }
 
 export const isAuthThunkCreator = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     let data = await authAPI.authMe()
       if (data.resultCode === 0) {
         let {id, email, login} = data.data
@@ -37,8 +65,8 @@ export const isAuthThunkCreator = () => {
   }
 }
 
-export const loginThunkCreator = (login, password, rememberMe, captcha) => {
-  return async (dispatch) => {
+export const loginThunkCreator = (login: string, password: string, rememberMe: boolean, captcha: string | null) => {
+  return async (dispatch: any) => {
     let data = await authAPI.login(login, password, rememberMe, captcha)
         if (data.resultCode === 0) {
             dispatch(isAuthThunkCreator())
@@ -52,7 +80,7 @@ export const loginThunkCreator = (login, password, rememberMe, captcha) => {
 }
 
 export const logoutThunkCreator = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     let data = await authAPI.logout()
         if (data.resultCode === 0) {
           dispatch(setUserDataActionCreator(null, null, null, false))
@@ -61,15 +89,15 @@ export const logoutThunkCreator = () => {
 }
 
 export const getCaptchaUrlThunkCreator = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     let dataCaptchaUrl = await securityAPI.getCaptchaUrl()        
-      dispatch(getCaptchaUrlSuccess(dataCaptchaUrl))                 
+      dispatch(getCaptchaUrlSuccessActionCreator(dataCaptchaUrl))                 
   }
 }
 
 
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: any): initialStateType => {
 
   switch (action.type) {
 
