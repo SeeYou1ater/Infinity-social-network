@@ -1,5 +1,5 @@
 
-let initialState = {
+/*let initialState = {
   dataFriends: [
   {fullName: Sergey, id: 1, location: {country: Russia, city: Moscow}},
   {fullName: Rostoslav, id: 2, location: {country: Russia, city: Voronezh}},
@@ -14,4 +14,4 @@ let friendsReducer = (state = initialState, action) => {
 }
 
 
-export default friendsReducer;
+export default friendsReducer;*/

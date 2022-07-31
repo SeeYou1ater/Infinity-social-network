@@ -1,0 +1,65 @@
+const ADD_MESSAGE = 'ADD-MESSAGE';
+
+type dialogType = {
+  name: string
+  id: number
+}
+
+type messageType = {
+  message: string
+  id: number
+}
+
+let initialState = {
+  dataDialogs: [
+    {name: 'Ekaterina', id: 0}, 
+    {name: 'Rostislav', id: 1}, 
+    {name: 'Igor', id: 2}, 
+    {name: 'Vladislav', id: 3}, 
+    {name: 'Pasha', id: 4}
+  ] as Array<dialogType>,
+  dataMessages: [
+    {message: 'Hi!', id: 0}, 
+    {message: 'Hello!', id: 1}, 
+    {message: 'How Are you?', id: 2}, 
+    {message: 'I,m fine!', id: 3}
+  ] as Array<messageType>
+}
+
+export type initialStateType = typeof initialState
+
+type sendMessageActionCreatorType = {
+  type: typeof ADD_MESSAGE
+  newMessage: string
+}
+
+export let sendMessageActionCreator = (newMessage: string): sendMessageActionCreatorType => {
+  return {
+    type: ADD_MESSAGE,
+    newMessage: newMessage
+  }
+}
+
+const dialogsReducer = (state = initialState, action: any): initialStateType => {
+
+  switch (action.type) {
+
+    case ADD_MESSAGE: {
+      let newMessage = {
+        message: action.newMessage,
+        id: 6
+      }
+      let stateCopy = {...state}
+      stateCopy.dataMessages = [...state.dataMessages]
+      stateCopy.dataMessages.push(newMessage)
+      return stateCopy;
+    }
+
+    default: 
+      return state;
+    }
+}
+
+
+
+export default dialogsReducer;
