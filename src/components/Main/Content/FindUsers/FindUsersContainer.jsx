@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUsersThunkCreator} from '../../../../redux/usersReducer';
+import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUsersThunkCreator, resetCurrentPageActionCreator} from '../../../../redux/usersReducer';
 import FindUsers from './FindUsers';
 import './FindUsersContainer.css';
 import Preloader from '../../../common/Preloader/Preloader';
@@ -11,6 +11,10 @@ class FindUsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize)
+  }
+
+  componentWillUnmount() {
+    this.props.resetCurrentPage()
   }
 
   render() {
@@ -53,6 +57,9 @@ let mapDispatchToProps = (dispatch) => {
     },
     showMoreUsers: (currentPage, pageSize) => {
       dispatch(addUsersThunkCreator(currentPage, pageSize))
+    },
+    resetCurrentPage: () => {
+      dispatch(resetCurrentPageActionCreator())
     }
   }
 }

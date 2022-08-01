@@ -8,7 +8,8 @@ const FOLLOW = 'FOLLOW',
       SET_TOTAL_COUNT = 'SET_TOTAL_COUNT',
       SET_PROGRESS = 'SET_PROGRESS',
       TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS',
-      ADD_MORE_USERS = 'ADD_MORE_USERS';
+      ADD_MORE_USERS = 'ADD_MORE_USERS',
+      RESET_CURRENT_PAGE = 'RESET_CURRENT_PAGE';
 
 let initialState = {
   dataUsers: [] as Array<UserType>,
@@ -103,6 +104,18 @@ export const setCurrentPageActionCreator = (currentPage: number): SetCurrentPage
   return {
     type: SET_CURRENT_PAGE,
     currentPage: currentPage
+  }
+}
+
+type ResetCurrentPageActionCreatorType = {
+  type: typeof RESET_CURRENT_PAGE
+  currentPageNumber: number
+}
+
+export const resetCurrentPageActionCreator = (): ResetCurrentPageActionCreatorType => {
+  return {
+    type: RESET_CURRENT_PAGE,
+    currentPageNumber: 1
   }
 }
 
@@ -205,8 +218,8 @@ let usersReducer = (state = initialState, action: any): InitialStateType => {
     }
 
     case SET_USERS: {
-      let stateCopy = {...state}
-      stateCopy.dataUsers = [...state.dataUsers, ...action.dataUsers]
+      let stateCopy = { ...state,
+                        dataUsers: [...action.dataUsers]}
       return stateCopy
     }
 
@@ -217,6 +230,11 @@ let usersReducer = (state = initialState, action: any): InitialStateType => {
     
     case SET_CURRENT_PAGE: {
       let stateCopy = {...state, currentPage: action.currentPage}
+      return stateCopy
+    }
+
+    case RESET_CURRENT_PAGE: {
+      let stateCopy = {...state, currentPage: action.currentPageNumber}
       return stateCopy
     }
 
