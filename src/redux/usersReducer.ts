@@ -1,3 +1,4 @@
+import { UserType } from './../types/types';
 import { UsersAPI } from "../api/api";
 
 const FOLLOW = 'FOLLOW',
@@ -7,17 +8,25 @@ const FOLLOW = 'FOLLOW',
       SET_TOTAL_COUNT = 'SET_TOTAL_COUNT',
       SET_PROGRESS = 'SET_PROGRESS',
       TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS',
-      ADD_MORE_USERS = 'ADD_MORE_USERS';  
+      ADD_MORE_USERS = 'ADD_MORE_USERS';
 
 let initialState = {
-  dataUsers: [],
+  dataUsers: [] as Array<UserType>,
   pageSize: 5,
   currentPage: 1,
   inProgress: false,
-  followingInProgress: []
+  followingInProgress: [] as Array<number> // array of usersId
 }
 
-export const addMoreUsers = (currentPage, dataUsers) => {
+type InitialStateType = typeof initialState
+
+type AddMoreUsersActionCreatorType = {
+  type: typeof ADD_MORE_USERS
+  dataUsers: Array<UserType>
+  currentPage: number
+}
+
+export const addMoreUsersActionCreator = (currentPage: number, dataUsers: Array<UserType>): AddMoreUsersActionCreatorType => {
   return {
     type: ADD_MORE_USERS,
     dataUsers: dataUsers,
@@ -25,49 +34,85 @@ export const addMoreUsers = (currentPage, dataUsers) => {
   }
 }
 
-export const setProgressActionCreator = (inProgress) => {
+type SetProgressActionCreatorType = {
+  type: typeof SET_PROGRESS
+  inProgress: boolean
+}
+
+export const setProgressActionCreator = (inProgress: boolean): SetProgressActionCreatorType  => {
   return {
     type: SET_PROGRESS,
     inProgress: inProgress
   }
 }
 
-export const followActionCreator = (userId) => {
+type FollowActionCreatorType = {
+  type: typeof FOLLOW
+  userId: number
+}
+
+export const followActionCreator = (userId: number): FollowActionCreatorType => {
   return {
     type: FOLLOW,
     userId: userId
   }
 }
 
-export const unfollowActionCreator = (userId) => {
+type UnfollowActionCreatorType = {
+  type: typeof UNFOLLOW
+  userId: number
+}
+
+export const unfollowActionCreator = (userId: number): UnfollowActionCreatorType => {
   return {
     type: UNFOLLOW,
     userId: userId
   }
 }
 
-export const setUsersActionCreator = (dataUsers) => {
+type SetUsersActionCreatorType = {
+  type: typeof SET_USERS
+  dataUsers: Array<UserType>
+}
+
+export const setUsersActionCreator = (dataUsers: Array<UserType>): SetUsersActionCreatorType => {
   return {
     type: SET_USERS,
     dataUsers: dataUsers
   }
 }
 
-export const setTotalCountActionCreator = (totalCount) => {
+type SetTotalCountActionCreator = {
+  type: typeof SET_TOTAL_COUNT
+  totalCount: number
+}
+
+export const setTotalCountActionCreator = (totalCount: number): SetTotalCountActionCreator => {
   return {
     type: SET_TOTAL_COUNT,
     totalCount: totalCount
   }
 }
 
-export const setCurrentPageActionCreator = (currentPage) => {
+type SetCurrentPageActionCreatorType = {
+  type: typeof SET_CURRENT_PAGE
+  currentPage: number
+}
+
+export const setCurrentPageActionCreator = (currentPage: number): SetCurrentPageActionCreatorType => {
   return {
     type: SET_CURRENT_PAGE,
     currentPage: currentPage
   }
 }
 
-export const toggleIsFollowingProgressActionCreator = (followingInProgress, userId) => {
+type ToggleIsFollowingProgressActionCreatorType = {
+  type: typeof TOGGLE_IS_FOLLOWING_PROGRESS
+  followingInProgress: boolean
+  userId: number
+}
+
+export const toggleIsFollowingProgressActionCreator = (followingInProgress: boolean, userId: number): ToggleIsFollowingProgressActionCreatorType => {
   return {
     type: TOGGLE_IS_FOLLOWING_PROGRESS,
     followingInProgress: followingInProgress,
@@ -75,17 +120,17 @@ export const toggleIsFollowingProgressActionCreator = (followingInProgress, user
   }
 }
 
-export const addUsersThunkCreator = (currentPage, pageSize) => {
-  return async (dispatch) => {
+export const addUsersThunkCreator = (currentPage: number, pageSize: number) => {
+  return async (dispatch: any) => {
     dispatch(setProgressActionCreator(true))
     let data = await UsersAPI.getUsers(currentPage, pageSize)
-      dispatch(addMoreUsers(currentPage, data.items))
+      dispatch(addMoreUsersActionCreator(currentPage, data.items))
       dispatch(setProgressActionCreator(false))
   }
 }
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-  return async (dispatch) => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+  return async (dispatch: any) => {
   dispatch(setProgressActionCreator(true))
     let data = await UsersAPI.getUsers(currentPage, pageSize)
       dispatch(setUsersActionCreator(data.items))
@@ -94,8 +139,8 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     }
 }
 
-export const onPageChangedThunkCreator = (pageNumber, pageSize) => {
-  return async (dispatch) => {
+export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number) => {
+  return async (dispatch: any) => {
     dispatch(setProgressActionCreator(true))
     dispatch(setCurrentPageActionCreator(pageNumber))
     let data = await UsersAPI.getUsers(pageNumber, pageSize)
@@ -104,8 +149,8 @@ export const onPageChangedThunkCreator = (pageNumber, pageSize) => {
   }
 }
 
-export const FollowThunkCreator = (userId) => {
-  return async (dispatch) => {
+export const FollowThunkCreator = (userId: number) => {
+  return async (dispatch: any) => {
     dispatch(toggleIsFollowingProgressActionCreator(true, userId))
     let data = await UsersAPI.followUser(userId)
       if (data.resultCode === 0) {
@@ -115,8 +160,8 @@ export const FollowThunkCreator = (userId) => {
   }
 }
 
-export const UnfollowThunkCreator = (userId) => {
-  return async (dispatch) => {
+export const UnfollowThunkCreator = (userId: number) => {
+  return async (dispatch: any) => {
     dispatch(toggleIsFollowingProgressActionCreator(true, userId))
     let data = await UsersAPI.unfollowUser(userId)
       if (data.resultCode === 0) {
@@ -129,7 +174,7 @@ export const UnfollowThunkCreator = (userId) => {
 
 /////////////////////////////////////////////////////////////////////////// STATE ////////////////////////////////////////////////
 
-let usersReducer = (state = initialState, action) => {
+let usersReducer = (state = initialState, action: any): InitialStateType => {
 
   switch (action.type) {
 
@@ -143,7 +188,7 @@ let usersReducer = (state = initialState, action) => {
           return user;
         })
       }
-    return stateCopy
+      return stateCopy
     }
 
     case UNFOLLOW: {
@@ -156,32 +201,28 @@ let usersReducer = (state = initialState, action) => {
           return user;
         })
       }
-    return stateCopy
+      return stateCopy
     }
 
     case SET_USERS: {
-      /*let stateCopy = {
-        ...state,
-        dataUsers: [...state.dataUsers, ...action.dataUsers] //Тут добавляются пользователи в массив
-      }*/
       let stateCopy = {...state}
-      stateCopy.dataUsers = [...action.dataUsers]
-    return stateCopy
+      stateCopy.dataUsers = [...state.dataUsers, ...action.dataUsers]
+      return stateCopy
     }
 
     case SET_TOTAL_COUNT: {
       let stateCopy = {...state, totalUsersCount: action.totalCount}
-    return stateCopy
+      return stateCopy
     }
     
     case SET_CURRENT_PAGE: {
       let stateCopy = {...state, currentPage: action.currentPage}
-    return stateCopy
+      return stateCopy
     }
 
     case SET_PROGRESS: {
       let stateCopy = {...state, inProgress: action.inProgress}
-    return stateCopy
+      return stateCopy
     }
 
     case TOGGLE_IS_FOLLOWING_PROGRESS: {
@@ -190,7 +231,7 @@ let usersReducer = (state = initialState, action) => {
                         ? [...state.followingInProgress, action.userId]
                         : state.followingInProgress.filter(id => id !== action.userId)
                       }
-    return stateCopy
+      return stateCopy
     }
 
     case ADD_MORE_USERS: {

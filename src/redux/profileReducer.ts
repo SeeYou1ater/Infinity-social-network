@@ -1,3 +1,4 @@
+import { ProfileType, postType, PhotosType } from './../types/types';
 import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
@@ -8,36 +9,6 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE',
       SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS',
       SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS';
 
-type postType = {
-  message: string
-  likes: number
-  id?: number
-}
-
-type contactsType = {
-  github: string
-  vk: string
-  facebook: string
-  instagram: string
-  twitter: string
-  website: string
-  youtube: string
-  mainLink: string
-}
-
-type photosType = {
-  small: string | null
-  large: string | null
-}
-
-type ProfileType = {
-  userId: number
-  lookingForAJob: boolean
-  lookingForAJobDescription: string
-  fullName: string
-  contacts: contactsType
-  photos: photosType
-}
 
 let initialState = {
   dataPosts: [
@@ -101,10 +72,10 @@ export const setStatusProfileActionCreator = (status: string): SetStatusProfileA
 
 type SavePhotoSuccessType = {
   type: typeof SAVE_PHOTO_SUCCESS
-  photos: photosType
+  photos: PhotosType
 }
 
-export const savePhotoSuccess = (photos: photosType): SavePhotoSuccessType => {
+export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessType => {
   return {
     type: SAVE_PHOTO_SUCCESS,
     photos: photos
