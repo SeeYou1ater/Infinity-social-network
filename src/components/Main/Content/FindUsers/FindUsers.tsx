@@ -1,9 +1,21 @@
 import React from 'react';
+import { UserType } from '../../../../types/types';
 import './FindUsers.css';
 import User from './User';
 
 
-function FindUsers(props) {
+type PropsType = {
+  dataUsers: Array<UserType> 
+  pageSize: number
+  currentPage: number 
+  onUnfollow: (userId: number) => void
+  onFollow: (userId: number) => void
+  inProgress: boolean
+  followingInProgress: Array<number>
+  showMoreUsers: (currentPage: number, pageSize: number) => void
+}
+
+function FindUsers(props: PropsType){
     return (
         <section className='App__friends'>
           <ul>

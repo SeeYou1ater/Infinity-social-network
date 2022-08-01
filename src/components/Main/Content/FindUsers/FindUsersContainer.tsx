@@ -4,26 +4,50 @@ import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUser
 import FindUsers from './FindUsers';
 import './FindUsersContainer.css';
 import Preloader from '../../../common/Preloader/Preloader';
-import { getCurrentPage, getFollowingInProgress, getInProgress, getPageSize, getUsers, getUsersCount } from '../../../../redux/usersSelectors';
+import { getCurrentPage, getFollowingInProgress, getInProgress, getPageSize, getUsers } from '../../../../redux/usersSelectors';
+import { UserType } from '../../../../types/types';
+import { AppStateType } from '../../../../redux/redux-store';
 
 
-class FindUsersContainer extends React.Component {  
+type MapStatePropsType = { 
+  pageSize: number
+  currentPage: number 
+  inProgress: boolean
+  followingInProgress: Array<number>
+  dataUsers: Array<UserType>
+}
+
+type MapDispatchPropsType = {
+  showMoreUsers: (currentPage: number, pageSize: number) => void
+  getUsers: (currentPage: number, pageSize: number) => void
+  resetCurrentPage: () => void
+  onUnfollow: (userId: number) => void
+  onFollow: (userId: number) => void
+}
+
+type OwnPropsType = {
+  pageTitle: string
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
+
+class FindUsersContainer extends React.Component<PropsType> {  
 
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
 
-  componentWillUnmount() {
+  componentDidUnmount() {
     this.props.resetCurrentPage()
   }
 
   render() {
     return (<>
             {this.props.inProgress ? <Preloader/> : null}
+              <h2>{this.props.pageTitle}</h2>
               <FindUsers  dataUsers = {this.props.dataUsers} 
                           pageSize = {this.props.pageSize}
                           currentPage = {this.props.currentPage}
-                          onPageChanged = {this.onPageChanged}
                           onUnfollow = {this.props.onUnfollow}
                           onFollow = {this.props.onFollow}
                           inProgress = {this.props.inProgress}
@@ -33,18 +57,17 @@ class FindUsersContainer extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     dataUsers: getUsers(state),
     pageSize: getPageSize(state),
-    totalUsersCount: getUsersCount(state),
     currentPage: getCurrentPage(state),
     inProgress: getInProgress(state),
     followingInProgress: getFollowingInProgress(state),
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
   return {
     onUnfollow: (userId) => {
       dispatch(UnfollowThunkCreator(userId))
@@ -64,4 +87,4 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FindUsersContainer) 
+export default connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, mapDispatchToProps)(FindUsersContainer) 
