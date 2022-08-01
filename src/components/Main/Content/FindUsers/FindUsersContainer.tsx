@@ -37,7 +37,7 @@ class FindUsersContainer extends React.Component<PropsType> {
     this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     this.props.resetCurrentPage()
   }
 
