@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import './ProfileStatus.css';
 import statusChange from './../../../../../../assets/icons/white/changeStatus.png';
 
 
-function ProfileStatus(props) {
+type PropsType = {
+  status: string
+  isOwner: boolean
+  updateStatus: (status: string) => void
+}
+
+function ProfileStatus(props: PropsType) {
 
   let [editMode, setEditMode] = useState(false)
   let [status, setStatus] = useState(props.status)
@@ -12,16 +18,16 @@ function ProfileStatus(props) {
     setStatus(props.status); 
   }, [props.status])
 
-  const activateEditMode = () => {
+  const activateEditMode = ():void => {
     setEditMode(true)
   }
 
-  const deactivateEditMode = () => {
+  const deactivateEditMode = ():void => {
     setEditMode(false)
     props.updateStatus(status) 
   }
 
-  const onStatusChange = (e) => {
+  const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus(e.currentTarget.value)
   }
 
