@@ -1,5 +1,8 @@
+import { AppStateType } from './redux-store';
 import { UserType } from './../types/types';
 import { UsersAPI } from "../api/api";
+import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
 
 const FOLLOW = 'FOLLOW',
       UNFOLLOW = 'UNFOLLOW',
@@ -20,6 +23,7 @@ let initialState = {
 }
 
 type InitialStateType = typeof initialState
+
 
 type AddMoreUsersActionCreatorType = {
   type: typeof ADD_MORE_USERS
@@ -133,8 +137,14 @@ export const toggleIsFollowingProgressActionCreator = (followingInProgress: bool
   }
 }
 
-export const addUsersThunkCreator = (currentPage: number, pageSize: number) => {
-  return async (dispatch: any) => {
+type ActionsTypes = ToggleIsFollowingProgressActionCreatorType | ResetCurrentPageActionCreatorType | SetCurrentPageActionCreatorType | SetTotalCountActionCreator 
+                    | SetUsersActionCreatorType | UnfollowActionCreatorType | FollowActionCreatorType | SetProgressActionCreatorType | AddMoreUsersActionCreatorType
+
+
+type ThunkActionType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+
+export const addUsersThunkCreator = (currentPage: number, pageSize: number): ThunkActionType => {
+  return async (dispatch) => {
     dispatch(setProgressActionCreator(true))
     let data = await UsersAPI.getUsers(currentPage, pageSize)
       dispatch(addMoreUsersActionCreator(currentPage, data.items))
@@ -142,8 +152,8 @@ export const addUsersThunkCreator = (currentPage: number, pageSize: number) => {
   }
 }
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
-  return async (dispatch: any) => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number): ThunkActionType => {
+  return async (dispatch) => {
   dispatch(setProgressActionCreator(true))
     let data = await UsersAPI.getUsers(currentPage, pageSize)
       dispatch(setUsersActionCreator(data.items))
@@ -152,8 +162,8 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number) => {
-  return async (dispatch: any) => {
+export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number): ThunkActionType => {
+  return async (dispatch) => {
     dispatch(setProgressActionCreator(true))
     dispatch(setCurrentPageActionCreator(pageNumber))
     let data = await UsersAPI.getUsers(pageNumber, pageSize)
@@ -162,8 +172,8 @@ export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number) 
   }
 }
 
-export const FollowThunkCreator = (userId: number) => {
-  return async (dispatch: any) => {
+export const FollowThunkCreator = (userId: number): ThunkActionType => {
+  return async (dispatch) => {
     dispatch(toggleIsFollowingProgressActionCreator(true, userId))
     let data = await UsersAPI.followUser(userId)
       if (data.resultCode === 0) {
@@ -173,8 +183,8 @@ export const FollowThunkCreator = (userId: number) => {
   }
 }
 
-export const UnfollowThunkCreator = (userId: number) => {
-  return async (dispatch: any) => {
+export const UnfollowThunkCreator = (userId: number): ThunkActionType => {
+  return async (dispatch) => {
     dispatch(toggleIsFollowingProgressActionCreator(true, userId))
     let data = await UsersAPI.unfollowUser(userId)
       if (data.resultCode === 0) {
@@ -184,10 +194,9 @@ export const UnfollowThunkCreator = (userId: number) => {
   }
 }
 
-
 /////////////////////////////////////////////////////////////////////////// STATE ////////////////////////////////////////////////
 
-let usersReducer = (state = initialState, action: any): InitialStateType => {
+let usersReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
 
   switch (action.type) {
 
