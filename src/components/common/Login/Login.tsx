@@ -1,14 +1,20 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { Field } from "redux-form";
+import { Field, InjectedFormProps } from "redux-form";
 import { reduxForm } from "redux-form";
 import { requiredField } from "../../../utilities/validators/validators";
 import { FormControl } from "../FormControls/FormControls";
+import { FormDataType } from "./ContainerLogin";
 import './Login.css';
 
+type LoginOwnPropsType = {
+  isAuth: boolean
+  authUserId: number | null
+  captchaUrl: string | null
+  onSubmit: (formData: FormDataType) => void
+}
 
-
-class Login extends React.Component {
+class Login extends React.Component<LoginOwnPropsType> {
   render() {
     if (this.props.isAuth) { return <Navigate to={`/profile/${this.props.authUserId}`}/>} else {
     return (
@@ -26,7 +32,11 @@ class Login extends React.Component {
   }
 }
 
-class LoginForm extends React.Component {
+type LoginFormOwnPropsType = {
+  captchaUrl: string | null
+}
+
+class LoginForm extends React.Component<InjectedFormProps<FormDataType, LoginFormOwnPropsType> & LoginFormOwnPropsType> {
   render() {
     return (
         <form onSubmit={this.props.handleSubmit} className='App__login-form' action="">
@@ -43,7 +53,7 @@ class LoginForm extends React.Component {
   }
 }
 
-const LoginReduxForm = reduxForm({
+const LoginReduxForm = reduxForm<FormDataType, LoginFormOwnPropsType>({
   form: 'login'
 })(LoginForm)
 

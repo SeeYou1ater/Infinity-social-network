@@ -1,4 +1,4 @@
-export const requiredField = (value) => {
+export const requiredField = (value: string): string | undefined => {
   if (value) {
     return undefined  
   } else {
@@ -7,8 +7,8 @@ export const requiredField = (value) => {
 }
 
 
-export const MaxLengthCreator = (maxLength) => {
-  return (value) => {
+export const MaxLengthCreator = (maxLength: number) => {
+  return (value: string): string | undefined => {
     return value && value.length > maxLength ? `Must be ${maxLength} characters or less` : undefined
   }
 }
