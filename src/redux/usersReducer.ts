@@ -2,7 +2,6 @@ import { AppStateType } from './redux-store';
 import { UserType } from './../types/types';
 import { UsersAPI } from "../api/api";
 import { ThunkAction } from 'redux-thunk';
-import { Dispatch } from 'redux';
 
 const FOLLOW = 'FOLLOW',
       UNFOLLOW = 'UNFOLLOW',

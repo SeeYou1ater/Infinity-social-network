@@ -1,4 +1,5 @@
-import * as axios from "axios";
+import { ProfileType } from './../types/types';
+import axios from "axios";
 
 const instance = axios.create({
   withCredentials: true,
@@ -8,6 +9,15 @@ const instance = axios.create({
     }
 })
 
+export enum ResultCodesEnum {
+  Success = 0,
+  Error = 1,
+}
+
+export enum ResultCodeCaptchaEnum {
+  CaptchaIsRequired = 10,
+}
+
 export const UsersAPI = {
   getUsers(currentPage = 1, pageSize = 5) {
     return instance
@@ -16,14 +26,14 @@ export const UsersAPI = {
                 return response.data
               })
   },
-  followUser(userId) {
+  followUser(userId: number) {
     return instance
               .post(`follow/${userId}`)
               .then(response => { 
                 return response.data
               })
   },
-  unfollowUser(userId) {
+  unfollowUser(userId: number) {
     return instance
               .delete(`follow/${userId}`)
               .then(response => { 
@@ -32,21 +42,37 @@ export const UsersAPI = {
   } 
 }
 
+type MeResponseType = {
+  data: {
+    id: number
+    email: string
+    login: string
+  }
+  resultCode: ResultCodesEnum
+  messages: Array<string>
+}
+
+type LoginResponseType = {
+  data: {
+    userId: number
+  }
+  resultCode: ResultCodesEnum | ResultCodeCaptchaEnum
+  messages: Array<string>
+}
+
 export const authAPI = {
   authMe() {
     return instance
-              .get(`auth/me`)
+              .get<MeResponseType>(`auth/me`)
               .then(response => {
                 return response.data
               })
   },
-  login(email, password, rememberMe, captcha) {
+  login(email: string, password: string, rememberMe: boolean, captcha: string | null) {
     return instance
-              .post('auth/login', { email, password, rememberMe, captcha})
+              .post<LoginResponseType>('auth/login', { email, password, rememberMe, captcha })
               .then(response => {
-                console.log(response.data)
                 return response.data
-                
               })
   },
   logout(){
@@ -69,28 +95,28 @@ export const securityAPI = {
 }
 
 export const profileAPI = {
-  getProfile(profileId) {
+  getProfile(profileId: number) {
     return instance
           .get(`profile/${profileId}`)
           .then((response) => {
             return response.data
           })
   },
-  getStatus(profileId) {
+  getStatus(profileId: number) {
     return instance
           .get(`profile/status/${profileId}`)
           .then((response) => {
             return response.data
           })
   },
-  updateStatus(status) {
+  updateStatus(status: string) {
     return instance 
           .put(`profile/status/`, {status: status})
           .then((response) => {
             return response.data
           })
   },
-  savePhoto(filePhoto) {
+  savePhoto(filePhoto: any) {
     let dataFile = new FormData()
     dataFile.append('image', filePhoto);
     return instance
@@ -99,7 +125,7 @@ export const profileAPI = {
             return response.data
           })
   },
-  saveProfile(editDataAboutMe) {
+  saveProfile(editDataAboutMe: ProfileType) {
     return instance
           .put('profile/', editDataAboutMe)
           .then((response) => {
