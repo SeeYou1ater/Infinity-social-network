@@ -1,9 +1,7 @@
 import React, { Suspense } from 'react';
 import './Content.css';
-// import MessagesContainer from './Messages/MessagesContainer';
 import { Route, Routes } from 'react-router-dom';
 import FindUsersContainer from './FindUsers/FindUsersContainer';
-// import ProfileContainer from './Profile/ProfileContainer';
 import FriendsContainer from './Friends/FriendsContainer';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileSettingsContainer from './Settings/ProfileSettingsContainer';
@@ -11,14 +9,14 @@ import ProfileSettingsContainer from './Settings/ProfileSettingsContainer';
 const MessagesContainer = React.lazy(() => import('./Messages/MessagesContainer'));
 const ProfileContainer = React.lazy(() => import('./Profile/ProfileContainer'));
 
-function Content(props) {
+function Content() {
   return (
     <section className='App__content'>
       <Suspense fallback={<Preloader/>}>
         <Routes>
           <Route  path="/profile/:profileId" 
-                  element={<ProfileContainer  dataProfile = {props.state.dataProfile}/>}/>                  
-          <Route path="/messages/*" element={<MessagesContainer   dataMessages = {props.state.dataMessages}/>}/>
+                  element={<ProfileContainer/>}/>                  
+          <Route path="/messages/*" element={<MessagesContainer/>}/>
           <Route path="/friends/*" element={<FriendsContainer/>}/>
           <Route path="/findUsers/*" element={<FindUsersContainer pageTitle='Find users'/>}/>
           <Route path="/profile-settings/" element={<ProfileSettingsContainer/>}/>

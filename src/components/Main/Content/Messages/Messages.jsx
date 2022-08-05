@@ -18,7 +18,7 @@ function Messages(props) {
                         .map((user) => <DialogItem key={user.id} name={user.name} id={user.id}/>)
 
   const messageElements = props.dataMessages.dataMessages
-                        .map((message) => <Message message={message.message}/>)
+                        .map((message) => <Message key={message.id} message={message.message}/>)
   
   
   return (

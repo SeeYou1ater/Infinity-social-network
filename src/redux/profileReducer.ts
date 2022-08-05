@@ -1,7 +1,7 @@
 import { InferActionsTypes, AppStateType } from './redux-store';
 import { ProfileType, PostType, PhotosType } from './../types/types';
 import { stopSubmit } from "redux-form";
-import { profileAPI } from "../api/api";
+import { profileAPI } from '../api/profileApi';
 
 let initialState = {
   dataPosts: [
@@ -58,7 +58,7 @@ export const actions = {
 
 export const setUserProfileThunkCreator = (profileId: number | null) => {
   return async (dispatch: any) => {
-    let data = await profileAPI.getProfile(profileId)
+      let data = await profileAPI.getProfile(profileId)
       dispatch(actions.setUserProfileActionCreator(data))
   }
 }

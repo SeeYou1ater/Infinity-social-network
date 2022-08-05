@@ -1,6 +1,6 @@
+import { FindUsersAPI } from './../api/findUsersApi';
 import { AppStateType, InferActionsTypes } from './redux-store';
 import { UserType } from './../types/types';
-import { UsersAPI } from "../api/api";
 import { ThunkAction } from 'redux-thunk';
 
 let initialState = {
@@ -20,7 +20,7 @@ type ThunkActionType = ThunkAction<void, AppStateType, unknown, ActionTypes>
 export const addUsersThunkCreator = (currentPage: number, pageSize: number): ThunkActionType => {
   return async (dispatch) => {
     dispatch(actions.setProgressActionCreator(true))
-    let data = await UsersAPI.getUsers(currentPage, pageSize)
+    let data = await FindUsersAPI.getUsers(currentPage, pageSize)
       dispatch(actions.addMoreUsersActionCreator(currentPage, data.items))
       dispatch(actions.setProgressActionCreator(false))
   }
@@ -29,7 +29,7 @@ export const addUsersThunkCreator = (currentPage: number, pageSize: number): Thu
 export const getUsersThunkCreator = (currentPage: number, pageSize: number): ThunkActionType => {
   return async (dispatch) => {
   dispatch(actions.setProgressActionCreator(true))
-    let data = await UsersAPI.getUsers(currentPage, pageSize)
+    let data = await FindUsersAPI.getUsers(currentPage, pageSize)
       dispatch(actions.setUsersActionCreator(data.items))
       dispatch(actions.setTotalCountActionCreator(data.totalCount))
       dispatch(actions.setProgressActionCreator(false))
@@ -40,7 +40,7 @@ export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number):
   return async (dispatch) => {
     dispatch(actions.setProgressActionCreator(true))
     dispatch(actions.setCurrentPageActionCreator(pageNumber))
-    let data = await UsersAPI.getUsers(pageNumber, pageSize)
+    let data = await FindUsersAPI.getUsers(pageNumber, pageSize)
       dispatch(actions.setUsersActionCreator(data.items))
       dispatch(actions.setProgressActionCreator(false))
   }
@@ -49,7 +49,7 @@ export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number):
 export const FollowThunkCreator = (userId: number): ThunkActionType => {
   return async (dispatch) => {
     dispatch(actions.toggleIsFollowingProgressActionCreator(true, userId))
-    let data = await UsersAPI.followUser(userId)
+    let data = await FindUsersAPI.followUser(userId)
       if (data.resultCode === 0) {
         dispatch(actions.followActionCreator(userId))
       }
@@ -60,7 +60,7 @@ export const FollowThunkCreator = (userId: number): ThunkActionType => {
 export const UnfollowThunkCreator = (userId: number): ThunkActionType => {
   return async (dispatch) => {
     dispatch(actions.toggleIsFollowingProgressActionCreator(true, userId))
-    let data = await UsersAPI.unfollowUser(userId)
+    let data = await FindUsersAPI.unfollowUser(userId)
       if (data.resultCode === 0) {
       dispatch(actions.unfollowActionCreator(userId))
     }
