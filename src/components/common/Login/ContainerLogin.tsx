@@ -7,18 +7,18 @@ import Login from "./Login";
 type MapStatePropsType = {
   isAuth: boolean
   authUserId: number | null
-  captchaUrl: string | null
+  captchaUrl: string | null | undefined
 }
 
 type MapDispatchPropsType = {
-  login: (login: string, password: string, rememberMe: boolean, captcha: string | null) => void 
+  login: (login: string, password: string, rememberMe: boolean, captcha: string | null | undefined) => void 
 }
 
 export type FormDataType = {
   login: string
   password: string
   rememberMe: boolean
-  captchaUrl: string | null
+  captchaUrl: string | null | undefined
 }
 
 type PropsType = MapStatePropsType & MapDispatchPropsType
@@ -42,7 +42,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     isAuth: state.auth.isAuth,
     authUserId: state.auth.id,
-    captchaUrl: state.auth.captchaUrl
+    captchaUrl: state.auth.captchaUrl?.url
   }
 }
 

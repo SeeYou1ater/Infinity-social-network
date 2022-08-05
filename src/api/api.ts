@@ -95,7 +95,7 @@ export const securityAPI = {
 }
 
 export const profileAPI = {
-  getProfile(profileId: number) {
+  getProfile(profileId: number | null) {
     return instance
           .get(`profile/${profileId}`)
           .then((response) => {

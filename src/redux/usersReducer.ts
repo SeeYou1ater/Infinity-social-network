@@ -1,7 +1,7 @@
 import { AppStateType, InferActionsTypes } from './redux-store';
 import { UserType } from './../types/types';
 import { UsersAPI } from "../api/api";
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 
 let initialState = {
   dataUsers: [] as Array<UserType>,
@@ -129,7 +129,7 @@ export const actions = {
 
 /////////////////////////////////////////////////////////////////////////// STATE ////////////////////////////////////////////////
 
-let usersReducer = (state = initialState, action: ActionTypes): InitialStateType => {
+let usersReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
 
   switch (action.type) {
 

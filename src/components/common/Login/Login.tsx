@@ -10,7 +10,7 @@ import './Login.css';
 type LoginOwnPropsType = {
   isAuth: boolean
   authUserId: number | null
-  captchaUrl: string | null
+  captchaUrl: string | null | undefined
   onSubmit: (formData: FormDataType) => void
 }
 
@@ -33,7 +33,7 @@ class Login extends React.Component<LoginOwnPropsType> {
 }
 
 type LoginFormOwnPropsType = {
-  captchaUrl: string | null
+  captchaUrl: string | null | undefined
 }
 
 type FieldType = {

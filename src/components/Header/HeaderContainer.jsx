@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutThunkCreator, setUserDataActionCreator } from '../../redux/authReducer';
+import { logoutThunkCreator, actions} from '../../redux/authReducer';
 import Header from './Header';
 import './Header.css';
 
@@ -24,7 +24,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     setUserData: (userData) => {
-      dispatch(setUserDataActionCreator(userData))
+      dispatch(actions.setUserDataActionCreator(userData))
     },
     logout: () => {
       dispatch(logoutThunkCreator())

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newPostActionCreator } from '../../../../../redux/profileReducer';
+import { actions } from '../../../../../redux/profileReducer';
 import MyPosts from './MyPosts';
 
 class MyPostsContainer extends React.Component {
@@ -24,7 +24,7 @@ class MyPostsContainer extends React.Component {
   let mapDispatchToProps = (dispatch) => {
     return {
       addPost: (newPost) => {
-        dispatch(newPostActionCreator(newPost))
+        dispatch(actions.newPostActionCreator(newPost))
       }
     }
   }

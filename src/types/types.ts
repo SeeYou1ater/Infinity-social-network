@@ -1,5 +1,5 @@
 
-export type contactsType = {
+export type ContactsType = {
   github: string
   vk: string
   facebook: string
@@ -10,7 +10,7 @@ export type contactsType = {
   mainLink: string
 }
 
-export type postType = {
+export type PostType = {
   message: string
   likes: number
   id?: number
@@ -26,7 +26,7 @@ export type ProfileType = {
   lookingForAJob: boolean
   lookingForAJobDescription: string
   fullName: string
-  contacts: contactsType
+  contacts: ContactsType
   photos: PhotosType
 }
 
