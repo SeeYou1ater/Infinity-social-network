@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { Field, InjectedFormProps } from "redux-form";
 import { reduxForm } from "redux-form";
 import { requiredField } from "../../../utilities/validators/validators";
-import { FormControl, FormControlInputType } from "../FormControls/FormControls";
+import { FormControl, FormControlPropsType } from "../FormControls/FormControls";
 import { FormDataType } from "./ContainerLogin";
 import './Login.css';
 
@@ -38,7 +38,7 @@ type LoginFormOwnPropsType = {
 
 type FieldType = {
   className: string
-  component: React.FC<FormControlInputType>
+  component: React.FC<FormControlPropsType>
   validate?: [(value: string) => string | undefined]
   formType: 'input'
   type: string

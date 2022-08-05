@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUsersThunkCreator, resetCurrentPageActionCreator} from '../../../../redux/usersReducer';
+import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUsersThunkCreator, actions} from '../../../../redux/usersReducer';
 import FindUsers from './FindUsers';
 import './FindUsersContainer.css';
 import Preloader from '../../../common/Preloader/Preloader';
@@ -32,7 +32,7 @@ type OwnPropsType = {
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 class FindUsersContainer extends React.Component<PropsType> {  
-
+  
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
@@ -82,7 +82,7 @@ let mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
       dispatch(addUsersThunkCreator(currentPage, pageSize))
     },
     resetCurrentPage: () => {
-      dispatch(resetCurrentPageActionCreator())
+      dispatch(actions.resetCurrentPageActionCreator())
     }
   }
 }
