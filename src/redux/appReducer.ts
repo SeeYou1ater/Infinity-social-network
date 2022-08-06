@@ -1,5 +1,4 @@
-import { ThunkAction } from 'redux-thunk';
-import { InferActionsTypes, AppStateType } from './redux-store';
+import { InferActionsTypes, CommonThunkActionType } from './redux-store';
 import { isAuthThunkCreator } from "./authReducer";
 
 let initialState = {
@@ -10,9 +9,9 @@ type InitialStateType = typeof initialState
 
 type ActionTypes = InferActionsTypes<typeof actions>
 
-type ThunkActionType = ThunkAction<void, AppStateType, unknown, ActionTypes>
+type ThunkType = CommonThunkActionType<ActionTypes>
 
-export const initializeApp = (): ThunkActionType => { 
+export const initializeApp = (): ThunkType => { 
   return async (dispatch) => {
     await dispatch(isAuthThunkCreator())
           dispatch(actions.setInitialized())

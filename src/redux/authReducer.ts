@@ -1,6 +1,5 @@
-import { ThunkAction } from 'redux-thunk';
-import { AppStateType, InferActionsTypes } from './redux-store';
-import { stopSubmit } from "redux-form";
+import { InferActionsTypes, CommonThunkActionType } from './redux-store';
+import { FormAction, stopSubmit } from "redux-form";
 import { authAPI } from '../api/authApi';
 import { ResultCodeCaptchaEnum, ResultCodesEnum } from '../api/api';
 import { securityAPI } from '../api/securityApi';
@@ -17,7 +16,7 @@ type initialStateType = typeof initialState
 
 type ActionTypes = InferActionsTypes<typeof actions>
 
-type ThunkActionTypes = ThunkAction<void, AppStateType, unknown, ActionTypes>
+type ThunkType = CommonThunkActionType<ActionTypes | FormAction>
 
 export const actions = {
   getCaptchaUrlSuccessActionCreator: (url: {url: string}) => {
@@ -34,7 +33,7 @@ export const actions = {
   },
 }
 
-export const isAuthThunkCreator = (): ThunkActionTypes => {
+export const isAuthThunkCreator = (): ThunkType => {
   return async (dispatch) => {
     let data = await authAPI.authMe()
       if (data.resultCode === ResultCodesEnum.Success) {
@@ -44,8 +43,8 @@ export const isAuthThunkCreator = (): ThunkActionTypes => {
   }
 }
 
-export const loginThunkCreator = (login: string, password: string, rememberMe: boolean, captcha: null | string): ThunkActionTypes => {
-  return async (dispatch: any) => {
+export const loginThunkCreator = (login: string, password: string, rememberMe: boolean, captcha: null | string): ThunkType => {
+  return async (dispatch) => {
     let data = await authAPI.login(login, password, rememberMe, captcha)
         if (data.resultCode === ResultCodesEnum.Success) {
             dispatch(isAuthThunkCreator())
@@ -58,7 +57,7 @@ export const loginThunkCreator = (login: string, password: string, rememberMe: b
   }
 }
 
-export const logoutThunkCreator = (): ThunkActionTypes => {
+export const logoutThunkCreator = (): ThunkType => {
   return async (dispatch) => {
     let data = await authAPI.logout()
         if (data.resultCode === 0) {
@@ -67,7 +66,7 @@ export const logoutThunkCreator = (): ThunkActionTypes => {
   }
 }
 
-export const getCaptchaUrlThunkCreator = (): ThunkActionTypes => {
+export const getCaptchaUrlThunkCreator = (): ThunkType => {
   return async (dispatch) => {
     let dataCaptchaUrl = await securityAPI.getCaptchaUrl()        
       dispatch(actions.getCaptchaUrlSuccessActionCreator(dataCaptchaUrl))                 

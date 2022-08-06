@@ -1,7 +1,6 @@
 import { FindUsersAPI } from './../api/findUsersApi';
-import { AppStateType, InferActionsTypes } from './redux-store';
+import { CommonThunkActionType, InferActionsTypes } from './redux-store';
 import { UserType } from './../types/types';
-import { ThunkAction } from 'redux-thunk';
 
 let initialState = {
   dataUsers: [] as Array<UserType>,
@@ -15,9 +14,9 @@ type InitialStateType = typeof initialState
 
 type ActionTypes = InferActionsTypes<typeof actions>
 
-type ThunkActionType = ThunkAction<void, AppStateType, unknown, ActionTypes>
+type ThunkType = CommonThunkActionType<ActionTypes>
 
-export const addUsersThunkCreator = (currentPage: number, pageSize: number): ThunkActionType => {
+export const addUsersThunkCreator = (currentPage: number, pageSize: number): ThunkType => {
   return async (dispatch) => {
     dispatch(actions.setProgressActionCreator(true))
     let data = await FindUsersAPI.getUsers(currentPage, pageSize)
@@ -26,7 +25,7 @@ export const addUsersThunkCreator = (currentPage: number, pageSize: number): Thu
   }
 }
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number): ThunkActionType => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number): ThunkType => {
   return async (dispatch) => {
   dispatch(actions.setProgressActionCreator(true))
     let data = await FindUsersAPI.getUsers(currentPage, pageSize)
@@ -36,7 +35,7 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number): Thu
     }
 }
 
-export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number): ThunkActionType => {
+export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number): ThunkType => {
   return async (dispatch) => {
     dispatch(actions.setProgressActionCreator(true))
     dispatch(actions.setCurrentPageActionCreator(pageNumber))
@@ -46,7 +45,7 @@ export const onPageChangedThunkCreator = (pageNumber: number, pageSize: number):
   }
 }
 
-export const FollowThunkCreator = (userId: number): ThunkActionType => {
+export const FollowThunkCreator = (userId: number): ThunkType => {
   return async (dispatch) => {
     dispatch(actions.toggleIsFollowingProgressActionCreator(true, userId))
     let data = await FindUsersAPI.followUser(userId)
@@ -57,7 +56,7 @@ export const FollowThunkCreator = (userId: number): ThunkActionType => {
   }
 }
 
-export const UnfollowThunkCreator = (userId: number): ThunkActionType => {
+export const UnfollowThunkCreator = (userId: number): ThunkType => {
   return async (dispatch) => {
     dispatch(actions.toggleIsFollowingProgressActionCreator(true, userId))
     let data = await FindUsersAPI.unfollowUser(userId)

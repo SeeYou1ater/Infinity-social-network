@@ -1,16 +1,20 @@
-import profileReducer, { deletePostActionCreator, newPostActionCreator } from "./profileReducer";
+import profileReducer, { actions } from "./profileReducer";
 
 let initialState = {
   dataPosts: [
-    { message: "Hello World!", likes: '3', id: 0 }, { message: "Working...", likes: '7', id: 1 }, { message: "Learning...", likes: '5', id: 2 }
+    { message: "Hello World!", likes: 3, id: 0 }, 
+    { message: "Working...", likes: 7, id: 1 }, 
+    { message: "Learning...", likes: 5, id: 2 }
   ],
+  profile: null,
+  status: '',
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 it('length of posts should be incremented', () => {
   //1.initial test data
-  let action = newPostActionCreator('Hello!')
+  let action = actions.newPostActionCreator('Hello!')
 
   //2. create action for test
 
@@ -26,7 +30,7 @@ it('length of posts should be incremented', () => {
 
 it('last post should be named like incremented post message', () => {
   //1.initial test data
-  let action = newPostActionCreator('Hello!')
+  let action = actions.newPostActionCreator('Hello!')
 
   //2. create action for test
 
@@ -40,7 +44,7 @@ it('last post should be named like incremented post message', () => {
 
 it('after deleting posts length should be decremented', () => {
   //1.initial test data
-  let action = deletePostActionCreator(1)
+  let action = actions.deletePostActionCreator(1)
 
   //2. create action for test
 
@@ -54,7 +58,7 @@ it('after deleting posts length should be decremented', () => {
 
 it('after deleting posts length shouldn\'t be decremented if id is incorrect', () => {
   //1.initial test data
-  let action = deletePostActionCreator(100)
+  let action = actions.deletePostActionCreator(100)
 
   //2. create action for test
 
