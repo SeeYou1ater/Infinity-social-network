@@ -3,11 +3,11 @@ import Content from './Content/Content';
 import Navbar from './Navbar/Navbar';
 import './Main.css';
 
-function Main (props) {
+function Main () {
   return (
       <div className='main container'>
         <Navbar/>
-        <Content  state = {props.state}/>
+        <Content/>
       </div>
   )}
 

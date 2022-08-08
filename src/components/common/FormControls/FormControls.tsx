@@ -5,7 +5,7 @@ import './FormControls.css';
 export type FormControlPropsType = {
    input: WrappedFieldInputProps
    meta: WrappedFieldMetaProps
-   formType: 'input'
+   formType: 'input' | 'textarea'
    props: {
      className: string
      name: string

@@ -24,6 +24,7 @@ export type FormDataType = {
 type PropsType = MapStatePropsType & MapDispatchPropsType
 
 class ContainerLogin extends React.Component<PropsType> {
+  
   onSubmit = (formData: FormDataType) => {
     this.props.login(formData.login, formData.password, formData.rememberMe, formData.captchaUrl)
   }

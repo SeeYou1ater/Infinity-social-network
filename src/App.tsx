@@ -9,12 +9,19 @@ import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { initializeApp } from './redux/appReducer';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import store from './redux/redux-store';
+import store, { AppStateType } from './redux/redux-store';
 import Footer from './components/Footer/Footer';
 import GuestPage from './components/common/GuestPage/GuestPage';
 import ContainerLogin from './components/common/Login/ContainerLogin';
 
-class App extends React.Component {
+
+type StatePropsType = ReturnType<typeof mapStateToProps>
+
+type DispatchpropsType = {
+  initializeApp: () => void
+}
+
+class App extends React.Component<StatePropsType & DispatchpropsType> {
 
   componentDidMount() {
     this.props.initializeApp()
@@ -28,7 +35,7 @@ class App extends React.Component {
           <HeaderContainer/>
           <div className='main__wrapper'>
             <Routes>            
-                <Route path="/*" element={<Main state={this.props.state}/>}/>
+                <Route path="/*" element={<Main/>}/>
                 <Route path="/guestpage" element={<GuestPage/>}/>
                 <Route path="/login" element={<ContainerLogin/>}/>  
             </Routes>
@@ -40,27 +47,28 @@ class App extends React.Component {
 }
 ///////////////////////////////////////////////////////////////////////////////
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initializedApp: state.app.initialized,
   isAuth: state.auth.isAuth
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: any) => ({
   initializeApp: () => {
     dispatch(initializeApp())
   },
 })
 
 
-let AppContainer = compose(
+let AppContainer = compose<React.ComponentType>(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps))(App);
 
-const SocialApp = (props) => {
+
+const SocialApp: React.FC = () => {
     return  <HashRouter>
               <Provider store={store}>
                 <div className='App__wrapper'>
-                  <AppContainer state={store.getState()}/>
+                  <AppContainer/>
                 </div>
               </Provider>
             </HashRouter>
