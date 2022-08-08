@@ -3,7 +3,7 @@ import Content from './Content/Content';
 import Navbar from './Navbar/Navbar';
 import './Main.css';
 
-function Main () {
+const Main: React.FC = () => {
   return (
       <div className='main container'>
         <Navbar/>

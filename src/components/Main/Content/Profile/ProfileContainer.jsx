@@ -6,12 +6,13 @@ import { savePhotoThunkCreator, setUserProfileThunkCreator, setUserStatusThunkCr
 import { withRouter } from '../../../../hoc/withRouter';
 import { compose } from 'redux';
 import { ConnectedWithAuthRedirect } from '../../../../hoc/connectedWithAuthRedirect';
+import { useParams } from 'react-router-dom';
 
 
 
 class ProfileContainer extends React.Component {
   refreshPage() {
-    let profileId = this.props.router.params.profileId;
+    let profileId = useParams()
     if (!profileId) {
       profileId = this.props.authorizedUserId;
     }
