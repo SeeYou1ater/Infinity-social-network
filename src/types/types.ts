@@ -22,13 +22,13 @@ export type PhotosType = {
 }
 
 export type ProfileType = {
-  aboutMe: string
+  aboutMe: string | null
   userId: number | null
   lookingForAJob: boolean
-  lookingForAJobDescription: string
-  fullName: string
+  lookingForAJobDescription: string | null
+  fullName: string | null
   contacts: ContactsType
-  photos: PhotosType
+  photos: PhotosType | null
 }
 
 export type UserType = {

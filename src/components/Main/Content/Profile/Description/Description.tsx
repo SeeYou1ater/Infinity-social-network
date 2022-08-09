@@ -26,7 +26,7 @@ const Description: React.FC<DescriptionPropsType> = (props) => {
       <div className='App__profile-info'>
         <div className='App__profile-first-block'>
           <div className='App__profile-photo-block'>
-            <img className='App__profile-photo' src={props.dataProfile.profile?.photos.large || noPhoto} alt="#" />
+            <img className='App__profile-photo' src={props.dataProfile.profile?.photos?.large || noPhoto} alt="#" />
             <input id='input-changePhoto' className='input-changePhoto' type='file' onChange={onMainPhotoSelected}/>
             { props.isOwner && <label htmlFor='input-changePhoto'><img className='App__profile-photo-change' src={uploadPhoto} alt="" /></label> }
           </div>

@@ -7,7 +7,7 @@ import { ConnectedWithAuthRedirect } from '../../../../hoc/connectedWithAuthRedi
 import { useParams } from 'react-router-dom';
 import { actions, DataProfileType, savePhotoThunkCreator, setUserProfileThunkCreator, setUserStatusThunkCreator, updateStatusThunkCreator } from '../../../../redux/profileReducer';
 import { AppStateType } from '../../../../redux/redux-store';
-import { PostType, ProfileType } from '../../../../types/types';
+import { PostType } from '../../../../types/types';
 import Preloader from '../../../common/Preloader/Preloader';
 
 export type FormPostDataType = {
@@ -36,12 +36,16 @@ type OwnPropsType = {}
 
 const ProfileContainer: React.FC<MapStatePropsType & MapDispatchPropsType & OwnPropsType> = (props) => {
 
-  let { profileId } = useParams()
+  let { profileId } = useParams<{profileId: string}>()
+  let userId = Number(profileId)
 
   const refreshPage = () => {
-        let numProfileId = Number(profileId)
-        props.setUserProfile(numProfileId)
-        props.setUserStatus(numProfileId)
+      if (!userId) {
+        console.log('UserId should be number!')
+      } else {
+        props.setUserProfile(userId)
+        props.setUserStatus(userId)
+      }
   }
 
   const addNewPost = (formData: FormPostDataType) => {

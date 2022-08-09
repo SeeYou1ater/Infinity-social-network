@@ -1,24 +1,50 @@
+import React from "react";
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { reduxForm } from "redux-form";
+import { InjectedFormProps, reduxForm } from "redux-form";
 import { Field } from "redux-form";
+import { ProfileType } from "../../../../types/types";
 import { FormControl } from "../../../common/FormControls/FormControls";
 import Preloader from "../../../common/Preloader/Preloader";
 import './ProfileSettings.css';
 
-function ProfileSettings(props) {
+
+type ProfileSettingsPropsType = {
+  saveProfile: (editDataAboutMe: ProfileType) => void
+  profile: ProfileType | null
+  setUserProfile: (profileId: number) => void
+  authUserId: number
+}
+
+const ProfileSettings: React.FC<ProfileSettingsPropsType> = (props) => {
+
+  let authUserId = props.authUserId
+  const setUserProfile = props.setUserProfile
 
   useEffect( () => {
-    props.setUserProfile(props.authUserId)
-  }, [props])
+    setUserProfile(authUserId)
+  }, [authUserId, setUserProfile])
 
   if (props.profile === null) { return <Preloader/> }
 
   if (props.authUserId === null) { 
     return <Navigate to={'/login'}/>
-  } else return (
-  <form className="App__editModeProfileForm" onSubmit={props.handleSubmit}>
-    {props.error && <div className="stopSubmit-error">{props.error}</div> }
+  } else { return <>
+                    <ProfileSettingsWithReduxForm initialValues={props.profile} profile={props.profile} onSubmit={props.saveProfile}/>
+                  </>  
+                  }
+}
+
+type ProfileSettingsFormPropsType = {
+  profile: ProfileType
+  initialValues: ProfileType
+}
+
+class ProfileSettingsForm extends React.Component<InjectedFormProps<ProfileType, ProfileSettingsFormPropsType> & ProfileSettingsFormPropsType> {
+  render(){
+    return (
+      <form className="App__editModeProfileForm" onSubmit={this.props.handleSubmit}>
+      {this.props.error && <div className="stopSubmit-error">{this.props.error}</div> }
     <div className="App__editModeProfileForm-block">
       <div className="App__editModeProfileForm-fullname">
         <h3 className="App__editModeProfileForm-title"><b>Full name:</b></h3>
@@ -27,7 +53,7 @@ function ProfileSettings(props) {
       <div className="App__editModeProfileForm-contacts">
         <h3 className="App__editModeProfileForm-title App__editModeProfileForm-contacts-title"><b>Contacts:</b></h3>
          <div className="App__editModeProfileForm-contacts-block">
-          { Object.keys(props.profile.contacts).map( key => { return <div className="App__editModeProfileForm-contact-block" key={key}><p className='App__editModeProfileForm-contact-title'>{key}:</p><Field className="App__editModeProfileForm-contact-input" component={FormControl} 
+          { Object.keys(this.props.profile.contacts).map( key => { return <div className="App__editModeProfileForm-contact-block" key={key}><p className='App__editModeProfileForm-contact-title'>{key}:</p><Field className="App__editModeProfileForm-contact-input" component={FormControl} 
           formType={'input'} type="text" name={'contacts.' + key} placeholder={key}/></div>}) }
         </div> 
       </div>
@@ -46,11 +72,12 @@ function ProfileSettings(props) {
     </div>
     <button className="App__editModeProfileForm-buttonSave">Save</button>
   </form>
-)}
+  )}
+}
 
 
-const ProfileSettingsWithReduxForm = reduxForm({
+const ProfileSettingsWithReduxForm = reduxForm<ProfileType, ProfileSettingsFormPropsType>({
   form: 'AboutMeEditForm'
-})(ProfileSettings);
+})(ProfileSettingsForm);
 
-export default ProfileSettingsWithReduxForm;
+export default ProfileSettings;
