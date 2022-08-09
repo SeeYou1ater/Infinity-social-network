@@ -2,8 +2,16 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './User.css';
 import noPhoto from './../../../../assets/images/no-photo.jpg';
+import { UserType } from '../../../../types/types';
 
-function User(props) {
+type PropsType = {
+  user: UserType
+  onUnfollow: (userId: number) => void
+  onFollow: (userId: number) => void
+  followingInProgress: Array<number>
+}
+
+const User: React.FC<PropsType> = (props) => {
     let user = props.user
     return (
           <li key={user.id} className='App__friends-item'>

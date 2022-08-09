@@ -13,10 +13,10 @@ import { FormMessageDataType } from './MessagesContainer';
 type MessageOwnPropsType = {
   dataMessages: Array<MessageType>
   dataDialogs: Array<DialogType>
-  onSubmit: (formData: FormMessageDataType) => void
+  sendNewMessage: (formData: FormMessageDataType) => void
 }
 
-function Messages(props: MessageOwnPropsType) {
+const Messages: React.FC<MessageOwnPropsType> = (props) => {
   
   const dialogElements = props.dataDialogs
                         .map((user) => <DialogItem key={user.id} name={user.name} id={user.id}/>)
@@ -34,16 +34,14 @@ function Messages(props: MessageOwnPropsType) {
         <div className='dialog__window'>
           {messageElements}
         </div>
-        <AddMessageReduxForm onSubmit={props.onSubmit}/>
+        <AddMessageReduxForm onSubmit={props.sendNewMessage}/>
       </div>
     </section>
   )}
   
   let maxLength100 = MaxLengthCreator(100);
 
-  type AddMessageFormOwnPropsType = {
-    
-  }
+  type AddMessageFormOwnPropsType = {}
 
   class AddMessageForm extends React.Component<InjectedFormProps<FormMessageDataType, AddMessageFormOwnPropsType> & AddMessageFormOwnPropsType> {
     render(){

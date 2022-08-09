@@ -12,7 +12,7 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-  sendMessage: (message: string) => void
+  sendNewMessage: (message: string) => void
 }
 
 export type FormMessageDataType = {
@@ -21,14 +21,14 @@ export type FormMessageDataType = {
 
 class MessagesContainer extends React.Component<MapStatePropsType & MapDispatchPropsType> {
 
-  onSubmit = (formData: FormMessageDataType) => {
-    this.props.sendMessage(formData.message)
+  sendNewMessage = (formData: FormMessageDataType) => {
+    this.props.sendNewMessage(formData.message)
   }
 
   render() {
     return <Messages  dataMessages={this.props.dataMessages}
                       dataDialogs={this.props.dataDialogs}
-                      onSubmit={this.onSubmit}/>
+                      sendNewMessage={this.sendNewMessage}/>
   }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +42,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 
 let mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
   return {
-    sendMessage: (newMessage: string) => {
+    sendNewMessage: (newMessage: string) => {
       dispatch(actions.sendMessageActionCreator(newMessage))
     }
   }

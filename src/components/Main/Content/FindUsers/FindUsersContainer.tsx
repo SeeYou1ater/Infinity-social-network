@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUsersThunkCreator, actions} from '../../../../redux/usersReducer';
 import FindUsers from './FindUsers';
-import './FindUsersContainer.css';
 import Preloader from '../../../common/Preloader/Preloader';
 import { getCurrentPage, getFollowingInProgress, getInProgress, getPageSize, getUsers } from '../../../../redux/usersSelectors';
 import { UserType } from '../../../../types/types';

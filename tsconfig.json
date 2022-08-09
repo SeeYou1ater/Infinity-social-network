@@ -10,7 +10,7 @@
     "module": "commonJS",
     "lib": ["es6", "dom"],
     "target": "ES5",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "strict": true
   },
   "exclude": [

@@ -11,7 +11,7 @@ export type ContactsType = {
 }
 
 export type PostType = {
-  message: string
+  postText: string
   likes: number
   id?: number
 }
@@ -22,6 +22,7 @@ export type PhotosType = {
 }
 
 export type ProfileType = {
+  aboutMe: string
   userId: number | null
   lookingForAJob: boolean
   lookingForAJobDescription: string
@@ -35,4 +36,5 @@ export type UserType = {
   name: string
   status: string
   photos: PhotosType
+  followed: boolean
 }

@@ -3,7 +3,6 @@ import './Reset.css';
 import './App.css';
 import Main from './components/Main/Main';
 import HeaderContainer from './components/Header/HeaderContainer';
-import { withRouter } from './hoc/withRouter';
 import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
@@ -59,9 +58,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 })
 
 
-let AppContainer = compose<React.ComponentType>(
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps))(App);
+let AppContainer = compose<React.ComponentType>(connect(mapStateToProps, mapDispatchToProps))(App);
 
 
 const SocialApp: React.FC = () => {

@@ -5,15 +5,17 @@ import { profileAPI } from '../api/profileApi';
 
 let initialState = {
   dataPosts: [
-    { message: "Hello World!", likes: 3, id: 0 }, 
-    { message: "Working...", likes: 7, id: 1 }, 
-    { message: "Learning...", likes: 5, id: 2 }
+    { postText: "Hello World!", likes: 3, id: 0 }, 
+    { postText: "Working...", likes: 7, id: 1 }, 
+    { postText: "Learning...", likes: 5, id: 2 }
   ] as Array<PostType>,
   profile: null as ProfileType | null,
   status: ''
 }
 
 type InitialStateType = typeof initialState
+
+export type DataProfileType = typeof initialState
 
 type ActionTypes = InferActionsTypes<typeof actions>
 
@@ -112,7 +114,7 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionTy
 
     case 'ADD_POST': {
       let newPost = {
-        message: action.newPost,
+        postText: action.newPost,
         likes: 0,
       }
       let stateCopy = {...state}
