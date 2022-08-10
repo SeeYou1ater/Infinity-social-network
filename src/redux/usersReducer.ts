@@ -10,7 +10,7 @@ let initialState = {
   followingInProgress: [] as Array<number> // array of usersId
 }
 
-type InitialStateType = typeof initialState
+export type UsersReducerStateType = typeof initialState
 
 type ActionTypes = InferActionsTypes<typeof actions>
 
@@ -128,7 +128,7 @@ export const actions = {
 
 /////////////////////////////////////////////////////////////////////////// STATE ////////////////////////////////////////////////
 
-let usersReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
+let usersReducer = (state: UsersReducerStateType = initialState, action: ActionTypes): UsersReducerStateType => {
 
   switch (action.type) {
 

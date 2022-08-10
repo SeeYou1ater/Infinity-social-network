@@ -4,7 +4,6 @@ import './App.css';
 import Main from './components/Main/Main';
 import HeaderContainer from './components/Header/HeaderContainer';
 import { connect, Provider } from 'react-redux';
-import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { initializeApp } from './redux/appReducer';
 import { HashRouter, Route, Routes } from 'react-router-dom';
@@ -23,7 +22,7 @@ type DispatchPropsType = {
   initializeApp: () => void
 }
 
-class App extends React.Component<MapStateType & DispatchPropsType> {
+class SocialApp extends React.Component<MapStateType & DispatchPropsType> {
 
   componentDidMount() {
     this.props.initializeApp()
@@ -61,19 +60,19 @@ const mapDispatchToProps = (dispatch: any) => ({
 })
 
 
-let AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+let AppContainer = connect(mapStateToProps, mapDispatchToProps)(SocialApp);
 
 
-const SocialApp: React.FC = () => {
-    return  <HashRouter>
+const App: React.FC<{}> = () => {
+    return  (<HashRouter>
               <Provider store={store}>
                 <div className='App__wrapper'>
                   <AppContainer/>
                 </div>
               </Provider>
-            </HashRouter>
+            </HashRouter>)
 }
 
-export default SocialApp
+export default App
 
 
