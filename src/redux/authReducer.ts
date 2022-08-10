@@ -14,6 +14,8 @@ let initialState = {
 
 type initialStateType = typeof initialState
 
+export type UserDataType = typeof initialState
+
 type ActionTypes = InferActionsTypes<typeof actions>
 
 type ThunkType = CommonThunkActionType<ActionTypes | FormAction>

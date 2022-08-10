@@ -4,9 +4,9 @@ import SocialApp from './App';
 import store from './redux/redux-store';
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 
 root.render (
-              <SocialApp state={store.getState()}/>     
+              <SocialApp/>     
 )
 

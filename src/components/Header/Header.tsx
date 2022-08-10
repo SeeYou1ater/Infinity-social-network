@@ -4,7 +4,13 @@ import logo from '../../logo.png';
 import './Header.css';
 import Applogout from './../../assets/icons/white/appLogout.png';
 
-function Header (props) {
+type PropsType = {
+  isAuth: boolean
+  login: string | null
+  logout: () => void
+}
+
+const Header: React.FC<PropsType> = (props) => {
   
   return (
       <header className='App__header'>

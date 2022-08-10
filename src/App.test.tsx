@@ -6,7 +6,6 @@ import SocialApp from "./App";
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  const root = createRoot(div)
-  root.render(<SocialApp/>);
-  root.unmount(<SocialApp/>);
+  ReactDOM.render(<SocialApp/>, div)
+  ReactDOM.unmountComponentAtNode(div)
 });

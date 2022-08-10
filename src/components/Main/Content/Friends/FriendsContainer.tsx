@@ -5,12 +5,12 @@ import Friends from "./Friends";
 
 
 
-class FriendsContainer extends React.Component {
-  render() {
+const FriendsContainer: React.FC<{}> = () => {
+  
     return (
     <Friends/>
     )
-  }
+  
 }
 
 export default ConnectedWithAuthRedirect(FriendsContainer)

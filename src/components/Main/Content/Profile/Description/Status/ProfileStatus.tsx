@@ -3,13 +3,13 @@ import './ProfileStatus.css';
 import statusChange from './../../../../../../assets/icons/white/changeStatus.png';
 
 
-type PropsType = {
-  status: string
+export type PropsType = {
+  status: string 
   isOwner: boolean
   updateStatus: (status: string) => void
 }
 
-function ProfileStatus(props: PropsType) {
+const ProfileStatus: React.FC<PropsType> = (props) => {
 
   let [editMode, setEditMode] = useState(false)
   let [status, setStatus] = useState(props.status)

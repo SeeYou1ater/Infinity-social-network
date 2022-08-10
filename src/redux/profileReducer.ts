@@ -17,9 +17,9 @@ type InitialStateType = typeof initialState
 
 export type DataProfileType = typeof initialState
 
-type ActionTypes = InferActionsTypes<typeof actions>
+export type ProfileActionTypes = InferActionsTypes<typeof actions>
 
-type ThunkType = CommonThunkActionType<ActionTypes | FormAction>
+export type ThunkType = CommonThunkActionType<ProfileActionTypes | FormAction>
 
 export const actions = {
   deletePostActionCreator: (postId: number) => {
@@ -108,7 +108,7 @@ export const saveProfileThunkCreator = (editDataAboutMe: ProfileType): ThunkType
   }
 }
 
-const profileReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
+const profileReducer = (state: InitialStateType = initialState, action: ProfileActionTypes): InitialStateType => {
 
   switch (action.type) {
 

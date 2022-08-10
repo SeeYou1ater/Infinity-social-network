@@ -11,8 +11,13 @@ import appMusic from './../../../assets/icons/white/appMusic.png';
 import appVideos from './../../../assets/icons/white/appVideos.png';
 import appGames from './../../../assets/icons/white/appGames.png';
 import appSettings from './../../../assets/icons/white/appSettings.png';
+import { AppStateType } from '../../../redux/redux-store';
 
-function Navbar (props) {
+type MapStateType = {
+  authId: number | null
+}
+
+const Navbar: React.FC<MapStateType> = (props) => {
   return (
     <section className='App__nav'>
       <ul>
@@ -29,10 +34,10 @@ function Navbar (props) {
     </section>
   )}
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType): MapStateType => {
   return {
     authId: state.auth.id
   }
 }
 
-export default connect(mapStateToProps, null)(Navbar);
+export default connect(mapStateToProps, {})(Navbar);

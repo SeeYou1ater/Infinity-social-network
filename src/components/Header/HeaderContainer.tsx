@@ -1,31 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutThunkCreator, actions} from '../../redux/authReducer';
+import { logoutThunkCreator } from '../../redux/authReducer';
+import { AppStateType } from '../../redux/redux-store';
 import Header from './Header';
 import './Header.css';
 
-class HeaderContainer extends React.Component {
+type MapStateType = {
+  isAuth: boolean
+  login: string | null
+}
 
-  render () {
+type MapDispatchType = {
+  logout: () => void
+}
+
+const HeaderContainer: React.FC<MapStateType & MapDispatchType> = (props) => {
+
     return (
-      <Header {...this.props}/>
+      <Header {...props}/>
     )
-  }
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType): MapStateType => {
   return {
     isAuth: state.auth.isAuth,
     login: state.auth.login
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch: any): MapDispatchType => {
   return {
-    setUserData: (userData) => {
-      dispatch(actions.setUserDataActionCreator(userData))
-    },
     logout: () => {
       dispatch(logoutThunkCreator())
     }

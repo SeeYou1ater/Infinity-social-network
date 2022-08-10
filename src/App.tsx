@@ -14,13 +14,16 @@ import GuestPage from './components/common/GuestPage/GuestPage';
 import ContainerLogin from './components/common/Login/ContainerLogin';
 
 
-type StatePropsType = ReturnType<typeof mapStateToProps>
+type MapStateType = {
+  isAuth: boolean
+  initializedApp: boolean
+}
 
-type DispatchpropsType = {
+type DispatchPropsType = {
   initializeApp: () => void
 }
 
-class App extends React.Component<StatePropsType & DispatchpropsType> {
+class App extends React.Component<MapStateType & DispatchPropsType> {
 
   componentDidMount() {
     this.props.initializeApp()

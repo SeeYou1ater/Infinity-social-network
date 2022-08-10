@@ -2,7 +2,7 @@ import React from 'react';
 import './Friends.css';
 
 
-function Friends() {
+const Friends: React.FC<{}> = () => {
   return (
     <section className='App__friends'>
         <ul className='App__friends-list'>
