@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 })
 
 
-let AppContainer = compose<React.ComponentType>(connect(mapStateToProps, mapDispatchToProps))(App);
+let AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 
 const SocialApp: React.FC = () => {
