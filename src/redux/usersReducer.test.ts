@@ -1,6 +1,20 @@
-import usersReducer, { actions, UsersReducerStateType } from "./usersReducer"
+import { ResultCodesEnum, APIResponseType } from './../api/api';
+import { FindUsersAPI } from './../api/findUsersApi';
+import usersReducer, { actions, FollowThunkCreator, UnfollowThunkCreator, UsersReducerStateType } from "./usersReducer"
+jest.mock('./../api/findUsersApi') // подменили путь API на фейк (mock)
+
+const FindUsersAPIMock = FindUsersAPI as jest.Mocked<typeof FindUsersAPI>
+       
+const result: APIResponseType = {
+  resultCode: ResultCodesEnum.Success,
+  messages: [],
+  data: {},
+}
 
 let state: UsersReducerStateType
+
+const dispatchMock = jest.fn()
+const getStateMock = jest.fn()
 
 beforeEach( () => {
   state = {
@@ -13,6 +27,11 @@ beforeEach( () => {
     inProgress: false,
     followingInProgress: []
   }
+
+  dispatchMock.mockClear()
+  getStateMock.mockClear()
+  FindUsersAPIMock.followUser.mockClear()
+  FindUsersAPIMock.unfollowUser.mockClear()
 })
 
 test('follow success', () => {
@@ -33,4 +52,30 @@ test('unfollow success', () => {
   expect(newState.dataUsers[1].followed).toBeTruthy()
   expect(newState.dataUsers[2].followed).toBeFalsy()
   expect(newState.dataUsers[3].followed).toBeFalsy()
+})
+
+test('follow thunk should be success', async () => {
+  FindUsersAPIMock.followUser.mockReturnValue(Promise.resolve(result)) 
+
+  const thunkMock = FollowThunkCreator(1)
+
+  await thunkMock(dispatchMock, getStateMock, {})
+
+  expect(dispatchMock).toBeCalledTimes(3)
+  expect(dispatchMock).toHaveBeenNthCalledWith(1, actions.toggleIsFollowingProgressActionCreator(true, 1))
+  expect(dispatchMock).toHaveBeenNthCalledWith(2, actions.followActionCreator(1))
+  expect(dispatchMock).toHaveBeenNthCalledWith(3, actions.toggleIsFollowingProgressActionCreator(false, 1))
+})
+
+test('unfollow thunk should be success', async () => {
+  FindUsersAPIMock.unfollowUser.mockReturnValue(Promise.resolve(result))
+
+  const thunkMock = UnfollowThunkCreator(3)
+
+  await thunkMock(dispatchMock, getStateMock, {})
+
+  expect(dispatchMock).toBeCalledTimes(3)
+  expect(dispatchMock).toHaveBeenNthCalledWith(1, actions.toggleIsFollowingProgressActionCreator(true, 3))
+  expect(dispatchMock).toHaveBeenNthCalledWith(2, actions.unfollowActionCreator(3))
+  expect(dispatchMock).toHaveBeenNthCalledWith(3, actions.toggleIsFollowingProgressActionCreator(false, 3))
 })

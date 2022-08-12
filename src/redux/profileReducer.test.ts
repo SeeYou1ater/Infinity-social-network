@@ -12,7 +12,7 @@ let initialState = {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-it('length of posts should be incremented', () => {
+test('length of posts should be incremented', () => {
   //1.initial test data
   let action = actions.newPostActionCreator('Hello!')
 
@@ -28,7 +28,7 @@ it('length of posts should be incremented', () => {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-it('last post should be named like incremented post message', () => {
+test('last post should be named like incremented post message', () => {
   //1.initial test data
   let action = actions.newPostActionCreator('Hello!')
 
@@ -42,7 +42,7 @@ it('last post should be named like incremented post message', () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-it('after deleting posts length should be decremented', () => {
+test('after deleting posts length should be decremented', () => {
   //1.initial test data
   let action = actions.deletePostActionCreator(1)
 
@@ -56,7 +56,7 @@ it('after deleting posts length should be decremented', () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-it('after deleting posts length shouldn\'t be decremented if id is incorrect', () => {
+test('after deleting posts length shouldn\'t be decremented if id is incorrect', () => {
   //1.initial test data
   let action = actions.deletePostActionCreator(100)
 
