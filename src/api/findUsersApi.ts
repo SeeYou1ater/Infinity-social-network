@@ -1,9 +1,9 @@
 import { GetItemsType, instance, APIResponseType } from './api';
 
 export const FindUsersAPI = {
-  getUsers(currentPage = 1, pageSize = 5) {
+  getUsers(currentPage = 1, pageSize = 5, term = '') {
     return instance
-              .get<GetItemsType>(`users?page=${currentPage}&count=${pageSize}`)
+              .get<GetItemsType>(`users?page=${currentPage}&count=${pageSize}&term=${term}`)
               .then(response => { 
                 return response.data
               })

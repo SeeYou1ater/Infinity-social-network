@@ -1,7 +1,9 @@
 import React from 'react';
+import { FilterType } from '../../../../redux/usersReducer';
 import { UserType } from '../../../../types/types';
 import './FindUsers.css';
 import User from './User';
+import UsersSearchForm from './UsersSearchForm';
 
 
 type PropsType = {
@@ -13,11 +15,13 @@ type PropsType = {
   inProgress: boolean
   followingInProgress: Array<number>
   showMoreUsers: (currentPage: number, pageSize: number) => void
+  onFilterChanged: (filter: FilterType) => void
 }
 
 function FindUsers(props: PropsType){
     return (
         <section className='App__friends'>
+          <UsersSearchForm onFilterChanged={props.onFilterChanged}/>
           <ul>
           {props.dataUsers.map((user) =>
             <User key={user.id}

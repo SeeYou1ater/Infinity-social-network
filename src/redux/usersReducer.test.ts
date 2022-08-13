@@ -25,7 +25,10 @@ beforeEach( () => {
     pageSize: 5,
     currentPage: 1,
     inProgress: false,
-    followingInProgress: []
+    followingInProgress: [],
+    filter: {
+      term: ''
+    }
   }
 
   dispatchMock.mockClear()

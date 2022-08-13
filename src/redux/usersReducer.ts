@@ -7,10 +7,14 @@ let initialState = {
   pageSize: 5,
   currentPage: 1,
   inProgress: false,
-  followingInProgress: [] as Array<number> // array of usersId
+  followingInProgress: [] as Array<number>, // array of usersId
+  filter: {
+    term: ''
+  }
 }
 
 export type UsersReducerStateType = typeof initialState
+export type FilterType = typeof initialState.filter
 
 type ActionTypes = InferActionsTypes<typeof actions>
 
@@ -25,10 +29,11 @@ export const addUsersThunkCreator = (currentPage: number, pageSize: number): Thu
   }
 }
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number): ThunkType => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number, term: string): ThunkType => {
   return async (dispatch) => {
   dispatch(actions.setProgressActionCreator(true))
-    let data = await FindUsersAPI.getUsers(currentPage, pageSize)
+  dispatch(actions.setFilter(term))
+    let data = await FindUsersAPI.getUsers(currentPage, pageSize, term)
       dispatch(actions.setUsersActionCreator(data.items))
       dispatch(actions.setTotalCountActionCreator(data.totalCount))
       dispatch(actions.setProgressActionCreator(false))
@@ -124,6 +129,12 @@ export const actions = {
       userId: userId
     } as const
   },
+  setFilter: (term: string) => {
+    return {
+      type: 'SET_FILTER',
+      payload: { term }
+    } as const
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////// STATE ////////////////////////////////////////////////
@@ -197,6 +208,13 @@ let usersReducer = (state: UsersReducerStateType = initialState, action: ActionT
       let stateCopy = {...state,
                         dataUsers: [...state.dataUsers, ...action.dataUsers],
                         currentPage: action.currentPage }
+      return stateCopy
+    }
+
+    case 'SET_FILTER': {
+      let stateCopy = {
+        ...state, filter: action.payload
+      }
       return stateCopy
     }
 

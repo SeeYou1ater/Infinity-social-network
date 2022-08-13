@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUsersThunkCreator, actions} from '../../../../redux/usersReducer';
+import { getUsersThunkCreator, FollowThunkCreator, UnfollowThunkCreator, addUsersThunkCreator, actions, FilterType} from '../../../../redux/usersReducer';
 import FindUsers from './FindUsers';
 import Preloader from '../../../common/Preloader/Preloader';
 import { getCurrentPage, getFollowingInProgress, getInProgress, getPageSize, getUsers } from '../../../../redux/usersSelectors';
@@ -18,7 +18,7 @@ type MapStatePropsType = {
 
 type MapDispatchPropsType = {
   showMoreUsers: (currentPage: number, pageSize: number) => void
-  getUsers: (currentPage: number, pageSize: number) => void
+  getUsers: (currentPage: number, pageSize: number, term: string) => void
   resetCurrentPage: () => void
   onUnfollow: (userId: number) => void
   onFollow: (userId: number) => void
@@ -30,14 +30,19 @@ type OwnPropsType = {
 
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
-class FindUsersContainer extends React.Component<PropsType> {  
-  
+class FindUsersContainer extends React.Component<PropsType> {   
+
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize)
+    this.props.getUsers(this.props.currentPage, this.props.pageSize, '')
   }
 
   componentWillUnmount() {
     this.props.resetCurrentPage()
+  }
+
+  onFilterChanged = (filter: FilterType) => {
+    debugger;
+    this.props.getUsers(this.props.currentPage, this.props.pageSize, filter.term)
   }
 
   render() {
@@ -51,7 +56,9 @@ class FindUsersContainer extends React.Component<PropsType> {
                           onFollow = {this.props.onFollow}
                           inProgress = {this.props.inProgress}
                           followingInProgress = {this.props.followingInProgress}
-                          showMoreUsers = {this.props.showMoreUsers}/>
+                          showMoreUsers = {this.props.showMoreUsers}
+                          onFilterChanged = {this.onFilterChanged}/>
+                          
             </>)
   }
 }
@@ -74,8 +81,8 @@ let mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
     onFollow: (userId) => {
       dispatch(FollowThunkCreator(userId))
     },
-    getUsers: (currentPage, pageSize) => {
-      dispatch(getUsersThunkCreator(currentPage, pageSize))
+    getUsers: (currentPage, pageSize, term) => {
+      dispatch(getUsersThunkCreator(currentPage, pageSize, term))
     },
     showMoreUsers: (currentPage, pageSize) => {
       dispatch(addUsersThunkCreator(currentPage, pageSize))
