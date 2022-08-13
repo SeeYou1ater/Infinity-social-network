@@ -14,8 +14,9 @@ type PropsType = {
   onFollow: (userId: number) => void
   inProgress: boolean
   followingInProgress: Array<number>
-  showMoreUsers: (currentPage: number, pageSize: number) => void
+  showMoreUsers: (currentPage: number, pageSize: number, term: string) => void
   onFilterChanged: (filter: FilterType) => void
+  filter: FilterType
 }
 
 function FindUsers(props: PropsType){
@@ -31,7 +32,7 @@ function FindUsers(props: PropsType){
                   followingInProgress={props.followingInProgress}/>)}
           </ul>
     
-          <button className='App__findUsers__showMoreButton' onClick={() => { props.showMoreUsers(props.currentPage + 1, props.pageSize) }}>Show more</button>
+          <button className='App__findUsers__showMoreButton' onClick={() => { props.showMoreUsers(props.currentPage + 1, props.pageSize, props.filter.term) }}>Show more</button>
     
         </section>
       )

@@ -20,10 +20,10 @@ type ActionTypes = InferActionsTypes<typeof actions>
 
 type ThunkType = CommonThunkActionType<ActionTypes>
 
-export const addUsersThunkCreator = (currentPage: number, pageSize: number): ThunkType => {
+export const addUsersThunkCreator = (currentPage: number, pageSize: number, term: string): ThunkType => {
   return async (dispatch) => {
     dispatch(actions.setProgressActionCreator(true))
-    let data = await FindUsersAPI.getUsers(currentPage, pageSize)
+    let data = await FindUsersAPI.getUsers(currentPage, pageSize, term)
       dispatch(actions.addMoreUsersActionCreator(currentPage, data.items))
       dispatch(actions.setProgressActionCreator(false))
   }
